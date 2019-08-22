@@ -1,0 +1,135 @@
+##############################################################
+#              Krathalan's sway configuration                #
+#         Homepage: https://gitlab.com/krathalan/dots        #
+#        Copyright (C) 2019 krathalan; License: GPLv3        #
+##############################################################
+
+# Disable xwayland
+xwayland disable
+
+########## Gaps ##########
+
+# Remove window borders
+default_border none
+
+# Add gaps
+gaps inner 8
+gaps outer 2
+
+########## Key bindings ##########
+
+# Use Windows key as $mod
+set $mod Mod4
+
+# Menu
+bindsym $mod+grave exec --no-startup-id BEMENU_BACKEND=wayland bemenu-run --prompt programs --wrap --fn "ibm plex mono 13" --tf "#00ff96" --hf "#00ff96"
+
+# Open terminal 
+bindsym $mod+Return exec --no-startup-id alacritty
+bindsym $mod+t exec --no-startup-id alacritty
+
+# Close focused window
+bindsym $mod+q kill
+
+# Lock screen
+bindsym Ctrl+Shift+l exec --no-startup-id swaylock
+
+# Volume buttons
+bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5
+bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 5
+bindsym XF86AudioMute exec --no-startup-id pamixer --toggle-mute
+
+# Media player controls
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioPause exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+
+# Brightness buttons
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 2
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 2
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Workspaces
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+
+# Cycle through workspaces
+bindsym $mod+Tab workspace next
+bindsym Mod1+Tab workspace next
+
+# Change focused window
+bindsym $mod+a focus left
+bindsym $mod+s focus down
+bindsym $mod+w focus up
+bindsym $mod+d focus right
+
+# Move focused window
+bindsym $mod+Shift+a move left
+bindsym $mod+Shift+s move down
+bindsym $mod+Shift+w move up
+bindsym $mod+Shift+d move right
+
+# Resizing
+bindsym $mod+r mode "resize"
+mode "resize" {
+        bindsym a resize shrink width 10 px or 10 ppt
+        bindsym s resize grow height 10 px or 10 ppt
+        bindsym w resize shrink height 10 px or 10 ppt
+        bindsym d resize grow width 10 px or 10 ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+# Miscellaneous
+bindsym $mod+h split h
+bindsym $mod+v split v
+bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec --no-startup-id swaymsg exit
+
+########## Other ##########
+
+set $term alacritty
+
+# GTK theme
+set $gnome-schema org.gnome.desktop.interface
+
+exec_always --no-startup-id {
+    gsettings set $gnome-schema gtk-theme 'Plata-Noir'
+    gsettings set $gnome-schema icon-theme 'Papirus-Dark'
+    gsettings set $gnome-schema font-name 'IBM Plex Sans 14'
+}
+
+# Font for window titles and swaybar
+font pango:ibm plex mono 13
+
+# Start programs on login 
+exec --no-startup-id alacritty
+exec --no-startup-id redshift
+exec --no-startup-id mako
+exec --no-startup-id waybar
+
+# Idle
+exec --no-startup-id swayidle before-sleep swaylock

@@ -1,0 +1,81 @@
+// ############################################################## \\
+// #             Krathalan's waybar configuration               # \\
+// #         Homepage: https://gitlab.com/krathalan/dots        # \\
+// #        Copyright (C) 2019 krathalan; License: GPLv3        # \\
+// ############################################################## \\
+
+{
+  "layer": "top", // Waybar at top layer
+  "position": "bottom", // Waybar position (top|bottom|left|right)
+  "height": 30, // Waybar height (to be removed for auto height)
+  "width": 1920, // Waybar width
+  // Choose the order of the modules
+  "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+  "modules-center": [],
+  "modules-right": ["custom/vpn", "network", "custom/battery", "pulseaudio", "cpu", "clock", "tray"],
+  // Module config
+  "sway/mode": {
+    "tooltip": false,
+    "format": "<span weight=\"bold\">{}</span>"
+  },
+  "custom/vpn": {
+    // https://gitlab.com/krathalan/waybar-modules
+    "interval": 5,
+    "tooltip": false,
+    "format": "{}",
+    "return-type": "json",
+    "exec": "wbm_vpn your-vpn"
+  },
+  "network": {
+    "tooltip": false,
+    "interval": 5,
+    // "interface": "wlp2*", // (Optional) To force the use of this interface
+    "format-wifi": "{essid} ({signalStrength}%) 蠟",
+    "format-ethernet": "{ifname}: {ipaddr}/{cidr}",
+    "format-linked": "{ifname} (No IP)",
+    "format-alt": "{ifname}: {ipaddr}",
+    "format-disconnected": "No internet"
+  },
+  "custom/battery": {
+    // https://gitlab.com/krathalan/waybar-modules
+    "interval": 5,
+    "tooltip": false,
+    "format": "{percentage}% {}{icon}",
+    "format-icons": ["", "", "", "", "", "", ""],
+    "return-type": "json",
+    "exec": "wbm_battery"
+  },
+  "pulseaudio": {
+    "tooltip": false,
+    // "scroll-step": 1, // %, can be a float
+    "format": "{volume}% {icon}",
+    "format-bluetooth": "{volume}% {icon}",
+    "format-muted": "",
+    "format-source": "{volume}%",
+    "format-source-muted": "",
+    "format-icons": {
+        "headphones": "",
+        "handsfree": "",
+        "headset": "",
+        "phone": "",
+        "portable": "",
+        "car": "",
+        "default": ["", "", ""]
+    },
+    "on-click": "pavucontrol"
+  },
+  "cpu": {
+    "interval": 5,
+    "tooltip": false,
+    "format": "{usage}% "
+  },
+  "clock": {
+    "tooltip": false,
+    "format": "{:%a, %b %d %Y %I:%M%P}"
+  },
+  "tray": {
+    "tooltip": false,
+    // "icon-size": 21,
+    "spacing": 10
+  }
+}

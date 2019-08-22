@@ -1,0 +1,10 @@
+font="IBM Plex Mono 13"
+margin=20
+border-size=3
+background-color=#00ff96dd
+border-color=#ffffffff
+text-color=#000000ff
+icons=1
+icon-path=/usr/share/icons/Papirus-Dark
+markup=1
+default-timeout=8000
