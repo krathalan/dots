@@ -104,7 +104,7 @@ mode "resize" {
 # Miscellaneous
 bindsym $mod+h split h
 bindsym $mod+v split v
-bindsym $mod+f fullscreen toggle
+bindsym $mod+f floating toggle
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec --no-startup-id swaymsg exit
@@ -118,6 +118,9 @@ set $gnome-schema org.gnome.desktop.interface
 
 # Set colors for floating windows with titles
 exec --no-startup-id swaymsg client.focused "#00804a" "#00ff96" "#000000" "#00cc77" "#00804a"
+
+# Some miscellaneous settings
+exec --no-startup-id swaymsg focus_follows_mouse always
 
 exec_always --no-startup-id {
     gsettings set $gnome-schema gtk-theme 'Plata-Noir'
