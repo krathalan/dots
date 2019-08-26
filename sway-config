@@ -107,7 +107,7 @@ bindsym $mod+v split v
 bindsym $mod+f floating toggle
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec --no-startup-id swaymsg exit
+bindsym $mod+Shift+e exec --no-startup-id swaynag -t warning -m 'Do you really want to exit sway?' -f "ibm plex mono 13" -e top --background "#000000aa" --border "#00ff96ff" --border-bottom "#00ff96ff" --button-background "#009959ff" --button-gap 3 --text "#ffffffff" -b 'Yes, exit sway' 'swaymsg exit'
 
 ########## Other ##########
 
