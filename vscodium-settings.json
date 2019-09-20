@@ -58,6 +58,8 @@
     "workbench.colorCustomizations": {
         "[Material Theme Darker]": {
             // Editor
+            "editor.lineHighlightBackground": "#212121",
+            "editor.lineHighlightBorder": "#777777",
             "editorCursor.foreground": "#dddddd",
             "editorLineNumber.foreground": "#777777",
             "editorLineNumber.activeForeground": "#ffffff",
