@@ -1,0 +1,114 @@
+// ##############################################################
+// #             Krathalan's VSCodium config/theme              #
+// #         Homepage: https://gitlab.com/krathalan/dots        #
+// #        Copyright (C) 2019 krathalan; License: GPLv3        #
+// ##############################################################
+
+// See all theme knobs here
+// https://code.visualstudio.com/api/references/theme-color
+
+// Icon theme: Material Icon Theme by Philipp Kief
+// Base theme: Material Theme by Mattia Astorino
+
+{
+    // Disable some automatic connections
+    "extensions.showRecommendationsOnlyOnDemand": true,
+    "telemetry.enableCrashReporter": false,
+    "typescript.disableAutomaticTypeAcquisition": true,
+    "update.mode": "none",
+    "update.showReleaseNotes": false,
+    "workbench.enableExperiments": false,
+    "workbench.settings.enableNaturalLanguageSearch": false,
+
+    // Autosave open files
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 500,
+
+    // Editor
+    "editor.accessibilitySupport": "off",
+    "editor.cursorSmoothCaretAnimation": true,
+    "editor.cursorBlinking": "smooth",
+    "editor.fontFamily": "'IBM Plex Mono'",
+    "editor.fontSize": 14,
+    "editor.hover.delay": 200,
+    "editor.largeFileOptimizations": false,
+    "editor.minimap.enabled": false,
+    "editor.renderLineHighlight": "all",
+    "editor.smoothScrolling": true,
+    "editor.tabCompletion": "on",
+    "editor.wordWrap": "on",
+
+    // Default file language should be shell scripts
+    "files.defaultLanguage": "shellscript",
+
+    // Miscellaneous user interface options
+    "breadcrumbs.enabled": false,
+    "window.menuBarVisibility": "visible",
+    "workbench.startupEditor": "none",
+    "workbench.tips.enabled": false,
+
+    // Theme
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "Material Theme Darker",
+    "editor.tokenColorCustomizations": {
+        "[Material Theme Darker]": {
+            "comments": "#00ff96aa",
+        }
+    },
+    "workbench.colorCustomizations": {
+        "[Material Theme Darker]": {
+            // Editor
+            "editorCursor.foreground": "#dddddd",
+            "editorLineNumber.foreground": "#777777",
+            "editorLineNumber.activeForeground": "#ffffff",
+            "editorGutter.background": "#111111",
+            "editorUnnecessaryCode.border": "#ffffff",
+    
+            // Git
+            "diffEditor.insertedTextBackground": "#00ff9622",
+            "diffEditor.removedTextBackground": "#ff000033",
+            "diffEditor.border": "#ffffff",
+            "editorGutter.addedBackground": "#00ff96",
+            "editorGutter.deletedBackground": "#ff0000",
+            "editorGutter.modifiedBackground": "#fff569",
+    
+            // Borders
+            "activityBar.border": "#777777",
+            "editorGroupHeader.tabsBorder": "#777777",
+            "sideBar.border": "#777777",
+            "panel.border": "#777777",
+            "statusBar.border": "#777777",
+            "tab.activeBackground": "#444444",
+            "menu.border": "#777777",
+    
+            // Misc
+            "activityBar.foreground": "#ffffff",
+            "statusBar.foreground": "#bbbbbb",
+    
+            // Accent color
+            "activityBarBadge.background": "#00FF96",
+            "list.activeSelectionForeground": "#00FF96",
+            "list.inactiveSelectionForeground": "#00FF96",
+            "list.highlightForeground": "#00FF96",
+            "scrollbarSlider.activeBackground": "#00FF9650",
+            "editorSuggestWidget.highlightForeground": "#00FF96",
+            "textLink.foreground": "#00FF96",
+            "progressBar.background": "#00FF96",
+            "pickerGroup.foreground": "#00FF96",
+            "tab.activeBorder": "#00FF96",
+            "notificationLink.foreground": "#00FF96",
+            "editorWidget.resizeBorder": "#00FF96",
+            "editorWidget.border": "#00FF96",
+            "editorHoverWidget.border": "#00FF96",
+            "editorSuggestWidget.border": "#00FF96",
+            "settings.modifiedItemIndicator": "#00FF96",
+            "settings.headerForeground": "#00FF96",
+            "panelTitle.activeBorder": "#00FF96",
+            "breadcrumb.activeSelectionForeground": "#00FF96",
+            "menu.selectionForeground": "#00FF96",
+            "menubar.selectionForeground": "#00FF96",
+            "editor.findMatchBorder": "#00FF96",
+            "selection.background": "#00FF9640"
+        },
+    }
+}

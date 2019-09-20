@@ -31,7 +31,7 @@
     "interval": 5,
     // "interface": "wlp2*", // (Optional) To force the use of this interface
     "format-wifi": "{essid} ({signalStrength}%) 蠟",
-    "format-ethernet": "{ifname}: {ipaddr}/{cidr}",
+    "format-ethernet": "Ethernet ",
     "format-linked": "{ifname} (No IP)",
     "format-alt": "{ifname}: {ipaddr}",
     "format-disconnected": "No internet"
