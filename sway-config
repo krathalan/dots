@@ -7,6 +7,11 @@
 # Disable xwayland
 xwayland disable
 
+########## Color ##########
+
+# Only applies to popup windows
+client.focused #00ff96 #00ff96 #000000 #000000 #00ff96
+
 ########## Gaps ##########
 
 # Remove window borders
@@ -115,9 +120,6 @@ set $term alacritty
 
 # GTK theme
 set $gnome-schema org.gnome.desktop.interface
-
-# Set colors for floating windows with titles
-exec --no-startup-id swaymsg client.focused "#00804a" "#00ff96" "#000000" "#00cc77" "#00804a"
 
 # Some miscellaneous settings
 exec --no-startup-id swaymsg focus_follows_mouse always
