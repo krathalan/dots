@@ -1,4 +1,4 @@
-;;;;;;;;;;;;;;; Anders' polybar configuration ;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;; Krathalan's polybar configuration ;;;;;;;;;;;;;;;
 
 [colors]
 black = #000
@@ -26,7 +26,7 @@ padding-right = 1
 module-margin = 0
 
 ; Fonts
-font-0 = IBMPlexMono:size=11;
+font-0 = FiraMono:size=11;
 font-1 = MaterialDesignIcons:size=11;
 
 ; Modules
@@ -73,17 +73,17 @@ label-focused = %index%
 label-focused-foreground = ${colors.white}
 label-focused-underline = ${colors.green}
 label-focused-background = #ee444444
-label-focused-padding = 2
+label-focused-padding = 3
 
 ; Unfocused
 label-unfocused = %index%
-label-unfocused-padding = 2
+label-unfocused-padding = 3
 
 ; Urgent
 label-urgent = %index%
 label-urgent-foreground = ${colors.black}
 label-urgent-background = #bd2c40
-label-urgent-padding = 2
+label-urgent-padding = 3
 
 [module/xwindow]
 type = internal/xwindow
@@ -94,18 +94,18 @@ format-foreground = ${colors.white}
 format-padding = 2
 
 label = %title%
-label-maxlen = 140
+label-maxlen = 125
 label-empty = 
 
 [module/vpn]
 type = custom/script
-exec = wbm_vpn tun0
+exec = wbm_vpn your-vpn-name
 interval = 3.5
 label-underline = ${colors.green}
 
 [module/network]
 type = internal/network
-interface = yournetworkinterface
+interface = your-interface-name
 interval = 3.5
 accumulate-stats = false
 

@@ -1,6 +1,6 @@
 // ############################################################## \\
 // #             Krathalan's waybar configuration               # \\
-// #         Homepage: https://gitlab.com/krathalan/dots        # \\
+// #         Homepage: https://git.sr.ht/~krathalan/dots        # \\
 // #        Copyright (C) 2019 krathalan; License: GPLv3        # \\
 // ############################################################## \\
 
@@ -12,14 +12,20 @@
   // Choose the order of the modules
   "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
   "modules-center": [],
-  "modules-right": ["custom/vpn", "network", "custom/battery", "pulseaudio", "cpu", "clock", "tray"],
+  "modules-right": ["custom/xclients", "custom/vpn", "network", "custom/battery", "pulseaudio", "cpu", "clock", "tray"],
   // Module config
   "sway/mode": {
     "tooltip": false,
     "format": "<span weight=\"bold\">{}</span>"
   },
+  "custom/xclients": {
+    "interval": 5,
+    "tooltip": false,
+    "format": "{}",
+    "exec": "xlsclients | awk '{printf $2}'"
+  },
   "custom/vpn": {
-    // https://gitlab.com/krathalan/waybar-modules
+    // https://git.sr.ht/~krathalan/waybar-modules
     "interval": 5,
     "tooltip": false,
     "format": "{}",
@@ -37,7 +43,7 @@
     "format-disconnected": "No internet"
   },
   "custom/battery": {
-    // https://gitlab.com/krathalan/waybar-modules
+    // https://git.sr.ht/~krathalan/waybar-modules
     "interval": 5,
     "tooltip": false,
     "format": "{percentage}% {}{icon}",
@@ -71,7 +77,7 @@
   },
   "clock": {
     "tooltip": false,
-    "format": "{:%a, %b %d %Y %I:%M%P}"
+    "format": "{:%a %m/%d/%y %I:%M%P}"
   },
   "tray": {
     "tooltip": false,

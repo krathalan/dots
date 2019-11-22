@@ -1,6 +1,6 @@
 // ##############################################################
 // #             Krathalan's VSCodium config/theme              #
-// #         Homepage: https://gitlab.com/krathalan/dots        #
+// #         Homepage: https://git.sr.ht/~krathalan/dots        #
 // #        Copyright (C) 2019 krathalan; License: GPLv3        #
 // ##############################################################
 
@@ -14,6 +14,7 @@
     // Disable some automatic connections
     "extensions.showRecommendationsOnlyOnDemand": true,
     "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
     "typescript.disableAutomaticTypeAcquisition": true,
     "update.mode": "none",
     "update.showReleaseNotes": false,
@@ -28,8 +29,8 @@
     "editor.accessibilitySupport": "off",
     "editor.cursorSmoothCaretAnimation": true,
     "editor.cursorBlinking": "smooth",
-    "editor.fontFamily": "'IBM Plex Mono'",
-    "editor.fontSize": 14,
+    "editor.fontFamily": "'Fira Mono'",
+    "editor.fontSize": 14.5,
     "editor.hover.delay": 200,
     "editor.largeFileOptimizations": false,
     "editor.minimap.enabled": false,
@@ -45,6 +46,7 @@
     "breadcrumbs.enabled": false,
     "window.menuBarVisibility": "visible",
     "workbench.startupEditor": "none",
+    "window.zoomLevel": 1,
     "workbench.tips.enabled": false,
 
     // Theme
@@ -85,6 +87,8 @@
     
             // Misc
             "activityBar.foreground": "#ffffff",
+            "activityBar.activeBackground": "#00ff962c",
+            "activityBar.activeBorder": "#00ff96",
             "statusBar.foreground": "#bbbbbb",
     
             // Accent color
@@ -111,6 +115,6 @@
             "menubar.selectionForeground": "#00FF96",
             "editor.findMatchBorder": "#00FF96",
             "selection.background": "#00FF9640"
-        },
+        }
     }
 }

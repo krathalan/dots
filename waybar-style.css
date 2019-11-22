@@ -1,7 +1,7 @@
 /*
  * ##############################################################
  * #               Krathalan's waybar stylesheet                #
- * #         Homepage: https://gitlab.com/krathalan/dots        #
+ * #         Homepage: https://git.sr.ht/~krathalan/dots        #
  * #        Copyright (C) 2019 krathalan; License: GPLv3        #
  * ##############################################################
  */
@@ -9,8 +9,8 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: "IBM Plex Mono", "Material Design Icons";
-    font-size: 17px;
+    font-family: "Fira Mono", "Material Design Icons";
+    font-size: 18px;
     min-height: 0;
 }
 
@@ -39,7 +39,7 @@ window#waybar.hidden {
 
 #workspaces button.focused {
   color: #ffffff;
-    background-color: #333333;
+    background-color: #444444;
     border-bottom: 2px solid #00ff96;
 }
 
@@ -52,6 +52,7 @@ window#waybar.hidden {
 #cpu,
 #custom-battery,
 #custom-vpn,
+#custom-xclients,
 #idle_inhibitor,
 #memory,
 #mode,
@@ -85,6 +86,7 @@ window#waybar.hidden {
   border-bottom: 2px solid #00ff96;
 }
 
+#custom-xclients,
 #custom-vpn.down,
 #custom-battery.critical:not(.charging) {
   border-bottom: 2px solid #dd2241;

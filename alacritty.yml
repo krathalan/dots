@@ -1,6 +1,6 @@
 ##############################################################
 #            Krathalan's Alacritty config/theme              #
-#         Homepage: https://gitlab.com/krathalan/dots        #
+#         Homepage: https://git.sr.ht/~krathalan/dots        #
 #        Copyright (C) 2019 krathalan; License: GPLv3        #
 ##############################################################
 
@@ -9,7 +9,7 @@ window:
     columns: 0
     lines: 0
   padding:
-    x: 0
+    x: 5
     y: 0
   dynamic_padding: false
   decorations: none
@@ -25,7 +25,7 @@ tabspaces: 2
 
 font:
   normal:
-    family: IBM Plex Mono
+    family: Fira Mono
   size: 13.5
   offset:
     x: 0
@@ -48,17 +48,17 @@ colors:
     green:   '0x00b368'
     yellow:  '0xfff569'
     blue:    '0x0073e6'
-    magenta: '0x664db3'
+    magenta: '0x9482c9'
     cyan:    '0x45c0ed'
     white:   '0xeeeeee'
 
   bright:
-    black:   '0x777777'
+    black:   '0x5f5f5f'
     red:     '0xdd2241'
     green:   '0x00ff96'
     yellow:  '0xfff569'
     blue:    '0x1a8cff'
-    magenta: '0x9482c9'
+    magenta: '0xb3a6d8'
     cyan:    '0x69ccf0'
     white:   '0xffffff'
 
@@ -69,7 +69,7 @@ visual_bell:
   duration: 0
   color: '0xffffff'
 
-background_opacity: 0.7
+background_opacity: 0.75
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
@@ -78,7 +78,7 @@ selection:
 dynamic_title: false
 
 cursor:
-  style: Beam
+  style: Block
   unfocused_hollow: false
 
 live_config_reload: false
