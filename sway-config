@@ -20,6 +20,7 @@ default_border none
 # Add gaps
 gaps inner 8
 gaps outer 2
+gaps bottom 31
 
 ########## Key bindings ##########
 
@@ -107,6 +108,8 @@ mode "resize" {
 }
 
 # Miscellaneous
+bindsym --release $mod+Print exec --no-startup-id grim -t jpeg -q 95 "~/pictures/screenshots/$(echo "screen-$(date +%b-%d-%Y-%H-%M-%S).jpg" | tr '[:upper:]' '[:lower:]')" && notify-send -i "folder-pictures-open" "Sway" "Saved screenshot to ~/pictures/screenshots/."
+bindsym --release $mod+Shift+Print exec --no-startup-id grim -g "$(slurp)" -t jpeg -q 95 "~/pictures/screenshots/$(echo "screen-$(date +%b-%d-%Y-%H-%M-%S).jpg" | tr '[:upper:]' '[:lower:]')" && notify-send -i "folder-pictures-open" "Sway" "Saved screenshot to ~/pictures/screenshots/."
 bindsym $mod+h split h
 bindsym $mod+v split v
 bindsym $mod+f floating toggle
