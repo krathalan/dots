@@ -1,0 +1,55 @@
+##############################################################
+#              Krathalan's micro config/theme                #
+#         Homepage: https://git.sr.ht/~krathalan/dots        #
+#        Copyright (C) 2020 krathalan; License: GPLv3        #
+##############################################################
+
+#################################
+#  Changed from default theme   #
+#################################
+
+# General
+color-link default "#E9E9E9,#000000"
+color-link comment "#898989,#000000"
+color-link identifier "#E9E9E9,#000000"
+
+# Strings
+color-link constant "#AE81FF,#000000"
+color-link constant.string "#C8E39C,#000000"
+color-link constant.string.char "#C8E39C,#000000"
+
+# Special words and characters
+color-link statement "#9BD4FF,#000000"
+color-link symbol "#9BD4FF,#000000"
+color-link type "#9BD4FF,#000000"
+color-link special "#9BD4FF,#000000"
+
+# Bars
+color-link tabbar "#FFFFFF,#444444"
+color-link statusline "#000000,#00FF96"
+
+# Line number gutter
+color-link line-number "#AAAAAA,#1f1f1f"
+color-link current-line-number "bold #000000,#FFFFFF"
+color-link diff-added "#00E686"
+color-link diff-modified "#ffEE00"
+color-link diff-deleted "#CC0000"
+color-link cursor-line "#000000"
+
+# Errors
+color-link error "bold #FF0000,#000000"
+color-link gutter-error "#FF0000,#000000"
+
+#################################
+#  Unchanged from default theme #
+#################################
+color-link preproc "#CB4B16,#000000"
+color-link underlined "#D33682,#000000"
+color-link todo "bold #D33682,#000000"
+color-link indent-char "#505050,#000000"
+color-link gutter-warning "#E6DB74,#000000"
+color-link color-column "#323232"
+#No extended types; Plain brackets.
+color-link type.extended "default"
+#color-link symbol.brackets "default"
+color-link symbol.tag "#AE81FF,#000000"
