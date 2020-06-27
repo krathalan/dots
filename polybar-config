@@ -27,7 +27,7 @@ module-margin = 0
 
 ; Fonts
 font-0 = FiraMono:size=11;
-font-1 = MaterialDesignIcons:size=11;
+font-1 = MaterialIcons:size=11;
 
 ; Modules
 modules-left = i3 xwindow
@@ -94,8 +94,8 @@ format-foreground = ${colors.white}
 format-padding = 2
 
 label = %title%
-label-maxlen = 125
-label-empty = 
+label-maxlen = 100
+label-empty =
 
 [module/vpn]
 type = custom/script
@@ -112,7 +112,7 @@ accumulate-stats = false
 ; Connected
 format-connected = <label-connected>
 format-connected-padding = 2
-label-connected = %essid% (%signal%%) 蠟
+label-connected = %essid% (%signal%%) 
 label-connected-underline = ${colors.green}
 label-connected-foreground = ${colors.white}
 
@@ -120,7 +120,7 @@ label-connected-foreground = ${colors.white}
 format-disconnected = <label-disconnected>
 format-disconnected-padding = 2
 label-disconnected = No internet
-label-disconnected-underline = 
+label-disconnected-underline =
 label-disconnected-foreground = #66ffffff
 
 [module/pulseaudio]
@@ -128,9 +128,9 @@ type = internal/pulseaudio
 interval = 5
 
 ; Icons
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
 
 ; Default
 format-volume = <label-volume> <ramp-volume>
@@ -138,7 +138,7 @@ label-volume = %percentage%%
 
 ; Muted
 format-muted = <label-muted>
-label-muted = 
+label-muted = 
 label-muted-underline = ${colors.yellow}
 
 [module/cpu]
@@ -146,7 +146,7 @@ type = internal/cpu
 interval = 3.5
 format = <label>
 format-padding = 2
-label = %percentage%% 
+label = %percentage%% 
 
 [module/date]
 type = internal/date
