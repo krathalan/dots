@@ -18,9 +18,6 @@ window:
 scrolling:
   history: 10000
   multiplier: 5
-  auto_scroll: false
-
-tabspaces: 2
 
 font:
   normal:
@@ -42,11 +39,11 @@ colors:
     foreground: '0xeaeaea'
 
   normal:
-    black:   '0x3f3f3f'
+    black:   '0x000000'
     red:     '0xb01c34'
-    green:   '0x00b368'
-    yellow:  '0xfff569'
-    blue:    '0x0073e6'
+    green:   '0x00cc77'
+    yellow:  '0xffee00'
+    blue:    '0x1a8cff'
     magenta: '0x9482c9'
     cyan:    '0x45c0ed'
     white:   '0xeeeeee'
@@ -56,7 +53,7 @@ colors:
     red:     '0xdd2241'
     green:   '0x00ff96'
     yellow:  '0xfff569'
-    blue:    '0x1a8cff'
+    blue:    '0x66b3ff'
     magenta: '0xb3a6d8'
     cyan:    '0x69ccf0'
     white:   '0xffffff'
@@ -74,7 +71,7 @@ selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
   save_to_clipboard: false
 
-dynamic_title: false
+dynamic_title: true
 
 cursor:
   style: Block
