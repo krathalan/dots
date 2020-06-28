@@ -45,7 +45,7 @@ colors:
     yellow:  '0xffee00'
     blue:    '0x1a8cff'
     magenta: '0x9482c9'
-    cyan:    '0x45c0ed'
+    cyan:    '0xff7700'
     white:   '0xeeeeee'
 
   bright:
@@ -55,7 +55,7 @@ colors:
     yellow:  '0xfff569'
     blue:    '0x66b3ff'
     magenta: '0xb3a6d8'
-    cyan:    '0x69ccf0'
+    cyan:    '0xffa04d'
     white:   '0xffffff'
 
   indexed_colors: []
