@@ -46,6 +46,7 @@ alias diff="diff --color"
 # Make commands have default flags
 alias gitlog="git log --pretty=oneline --abbrev-commit --show-signature"
 alias ip="ip --color=auto"
+alias makechrootpkg="makechrootpkg -c -u -r /var/lib/makechrootpkg"
 
 # Redirect some commands to others
 alias cat="bat"
