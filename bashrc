@@ -15,13 +15,6 @@ check_command() {
   fi
 }
 
-# Print time since past pacman -Syu
-if check_command pacman; then
-  last_pac=$(tac /var/log/pacman.log | grep -m1 -F "[PACMAN] starting full system upgrade" | cut -d "[" -f2 | cut -d "]" -f1)
-  time_since=$((($(date +%s)-$(date --date="${last_pac}" +%s))/3600))
-  [[ "${time_since}" -gt 23 ]] && printf "\nIt has been %s%s hour%s%s since your last system upgrade\n" "${YELLOW}" "${time_since}" "$([ ${time_since} -ne 1 ] && printf s)" "${NC}"
-fi
-
 ##########
 # Colors #
 ##########
@@ -39,6 +32,14 @@ PS1="\n \$([[ \$? != 0 ]] && printf \"%sX \" \"\${RED}\")\$(if [[ ${EUID} == 0 ]
 # Looks like:
 #  anders@desktop ~/git/dots master
 #  >
+
+# Print time since last pacman -Syu upon opening a new terminal
+# as long as the time since last pacman -Syu is greater than 24 hours
+if check_command pacman; then
+  last_pac=$(tac /var/log/pacman.log | grep -m1 -F "[PACMAN] starting full system upgrade" | cut -d "[" -f2 | cut -d "]" -f1)
+  time_since=$((($(date +%s)-$(date --date="${last_pac}" +%s))/3600))
+  [[ "${time_since}" -gt 23 ]] && printf "\nIt has been %s%s hour%s%s since your last system upgrade\n" "${YELLOW}" "${time_since}" "$([ ${time_since} -ne 1 ] && printf s)" "${NC}"
+fi
 
 #############
 # Variables #
