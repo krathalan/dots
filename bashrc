@@ -104,8 +104,6 @@ makearchiso()
     sudo rm -rf "${iso_build_dir}"
   sudo mkdir -p "${iso_build_dir}"
 
-  sudo trap 'rm -rf "${iso_build_dir}"' EXIT SIGINT
-
   local -r output_dir="${HOME}/isos"
   [[ ! -d "${output_dir}" ]] &&
     mkdir -p "${output_dir}"
@@ -116,7 +114,7 @@ makearchiso()
   # -o: Set the output directory
   # -w: Set the working directory
   # $PWD: expected directory of archiso config files (e.g. packages.x86_64)
-  mkarchiso \
+  sudo mkarchiso \
     -v \
     -o "${output_dir}" \
     -w "${iso_build_dir}" \
