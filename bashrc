@@ -464,7 +464,21 @@ microv()
 # Rotate a PDF 90 degrees
 rotate_pdf()
 {
-  # Get file name without ".pdf" extension
-  baseFileName="${1%%.*}"
-  qpdf "${baseFileName}.pdf" "${baseFileName}-rotated.pdf" --rotate=90
+  [[ $# -lt 1 ]] &&
+    error "Please specify pdf(s) to rotate."
+  
+  local baseFileName=""
+
+  for pdf in "$@"; do
+    if [[ "${pdf}" != *".pdf" ]]; then
+      printf "%s is not a pdf, skipping" "${pdf}"
+      continue
+    fi
+
+    # Get file name without ".pdf" extension
+    baseFileName="${pdf%%.*}"
+    qpdf "${baseFileName}.pdf" "${baseFileName}-rotated.pdf" --rotate=90
+    mv "${baseFileName}-rotated.pdf" "${baseFileName}.pdf"
+    printf "%s rotated\n" "${baseFileName}.pdf"
+  done
 }
