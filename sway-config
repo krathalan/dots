@@ -20,7 +20,6 @@ default_border none
 # Add gaps
 gaps inner 8
 gaps outer 2
-gaps bottom 31
 
 ########## Key bindings ##########
 
@@ -28,11 +27,14 @@ gaps bottom 31
 set $mod Mod4
 
 # Menu
-bindsym $mod+grave exec --no-startup-id BEMENU_BACKEND=wayland bemenu-run --prompt programs --wrap --fn "fira mono 14" --tf "#00ff96" --hf "#00ff96"
+bindsym $mod+grave exec --no-startup-id rofi -config ~/.config/rofi/krathalan.theme -show run
 
 # Open terminal
 bindsym $mod+Return exec --no-startup-id alacritty
 bindsym $mod+t exec --no-startup-id alacritty
+
+# Open nemo
+bindsym $mod+e exec --no-startup-id nemo
 
 # Close focused window
 bindsym $mod+q kill
@@ -108,6 +110,8 @@ mode "resize" {
 }
 
 # Miscellaneous
+bindsym --release $mod+Print exec --no-startup-id prntscrn.sh
+bindsym --release $mod+Shift+Print exec --no-startup-id prntscrn.sh slurp
 bindsym $mod+h split h
 bindsym $mod+v split v
 bindsym $mod+f floating toggle
@@ -131,20 +135,18 @@ exec --no-startup-id swaymsg focus_follows_mouse always
 exec_always --no-startup-id {
     gsettings set $gnome-schema gtk-theme 'Plata-Noir'
     gsettings set $gnome-schema icon-theme 'Papirus-Dark'
-    gsettings set $gnome-schema font-name 'IBM Plex Sans 13'
+    gsettings set $gnome-schema font-name 'SF Pro Display 13'
 }
 
 # Font for window titles and swaybar
 font pango:fira mono 13
 
 # Start programs on login
-exec --no-startup-id redshift
+bar {
+    swaybar_command waybar
+}
 exec --no-startup-id mako
-exec --no-startup-id waybar
-
-# Wob (https://github.com/francma/wob)
-exec --no-startup-id mkfifo /tmp/wobpipe
-exec --no-startup-id tail -f /tmp/wobpipe | wob
+  exec --no-startup-id wlsunset -l "47.7" -L "-122.2" -t 3000 -T 6500
 
 # Idle
 exec --no-startup-id swayidle before-sleep 'swaylock --font "fira mono"'

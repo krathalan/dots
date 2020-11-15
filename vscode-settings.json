@@ -1,5 +1,5 @@
 // ##############################################################
-// #              Krathalan's VSCode config/theme               #
+// #             Krathalan's VSCodium config/theme              #
 // #         Homepage: https://git.sr.ht/~krathalan/dots        #
 // #        Copyright (C) 2019 krathalan; License: GPLv3        #
 // ##############################################################
@@ -46,11 +46,10 @@
     "breadcrumbs.enabled": false,
     "window.menuBarVisibility": "visible",
     "workbench.startupEditor": "none",
-    "window.zoomLevel": 1,
     "workbench.tips.enabled": false,
 
     // Theme
-    "workbench.iconTheme": "material-icon-theme",
+    "workbench.iconTheme": "eq-material-theme-icons-darker",
     "workbench.colorTheme": "Material Theme Darker",
     "editor.tokenColorCustomizations": {
         "[Material Theme Darker]": {
@@ -116,5 +115,9 @@
             "editor.findMatchBorder": "#00FF96",
             "selection.background": "#00FF9640"
         }
-    }
+    },
+    "editor.tabSize": 2,
+    "rust-client.disableRustup": true,
+    "shellcheck.disableVersionCheck": true,
+    "shellcheck.executablePath": "/usr/bin/shellcheck"
 }

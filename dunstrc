@@ -255,7 +255,7 @@
     close_all = ctrl+shift+space
 
     # Redisplay last message(s).
-    history = ctrl+grave 
+    history = ctrl+grave
 
     # Context menu.
     context = ctrl+shift+period

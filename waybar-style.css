@@ -10,7 +10,7 @@
     border: none;
     border-radius: 0;
     font-family: "Fira Mono", "Material Design Icons";
-    font-size: 18px;
+    font-size: 17px;
     min-height: 0;
 }
 
@@ -31,7 +31,7 @@ window#waybar.hidden {
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button {
-    padding: 0 5px;
+    padding: 3px 8px;
     background-color: transparent;
     border-bottom: 2px solid rgba(100, 114, 125, 0.5);
     color: #999999;

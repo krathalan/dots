@@ -47,33 +47,32 @@
     "interval": 5,
     "tooltip": false,
     "format": "{percentage}% {}{icon}",
-    "format-icons": ["", "", "", "", "", "", ""],
+    "format-icons": ["󰁻", "󰁼", "󰁽", "󰁿", "󰂀", "󰂂", "󰁹"],
     "return-type": "json",
     "exec": "wbm_battery"
   },
   "pulseaudio": {
     "tooltip": false,
     // "scroll-step": 1, // %, can be a float
-    "format": "{volume}% {icon}",
-    "format-bluetooth": "{volume}% {icon}",
-    "format-muted": "",
+    "format": "{icon}",
+    "format-bluetooth": "{icon}󰂱",
+    "format-muted": "󰸈",
     "format-source": "{volume}%",
-    "format-source-muted": "",
+    "format-source-muted": "󰸈",
     "format-icons": {
-        "headphones": "",
-        "handsfree": "",
-        "headset": "",
+        "headphones": "󰋋",
+        "handsfree": "󰋋",
+        "headset": "󰋋",
         "phone": "",
         "portable": "",
         "car": "",
-        "default": ["", "", ""]
-    },
-    "on-click": "pavucontrol"
+        "default": ["󰕿", "󰖀", "󰕾"]
+    }
   },
   "cpu": {
     "interval": 5,
     "tooltip": false,
-    "format": "{usage}% "
+    "format": "{usage}% 󰝨"
   },
   "clock": {
     "tooltip": false,
