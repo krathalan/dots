@@ -85,7 +85,7 @@ alias stow="stow --target=\${HOME}"
 #     $ sudo mkarchroot /var/lib/makechrootpkg/root base-devel
 # 4. Re-source your ~/.bashrc, or restart your terminal
 # 5. Start building packages with `makechrootpkg` instead of `makepkg`
-if [[ -d "/var/lib/makechrootpkg" ]]; then  
+if [[ -d "/var/lib/makechrootpkg" ]]; then
   alias arch-nspawn="arch-nspawn /var/lib/makechrootpkg/root"
   # $HOME, $HOME never changes
   # shellcheck disable=SC2139
@@ -107,8 +107,8 @@ makearchiso()
   local -r output_dir="${HOME}/isos"
   [[ ! -d "${output_dir}" ]] &&
     mkdir -p "${output_dir}"
-  
-  
+
+
   # $ mkarchiso --help
   # -v: Enable verbose output
   # -o: Set the output directory
@@ -119,7 +119,7 @@ makearchiso()
     -o "${output_dir}" \
     -w "${iso_build_dir}" \
     "${PWD}"
-  
+
   # Clean up tmp dirs
   sudo rm -rf "${iso_build_dir}"
 }
@@ -129,7 +129,6 @@ if check_command bat; then
   alias cat="bat"
   alias less="bat"
   alias tree="exa --long --tree"
-  export PAGER="bat"
   export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 fi
 if check_command exa; then
@@ -331,11 +330,11 @@ reverse_gif()
 # $2: drive to write to (e.g. /dev/sdd)
 write_iso()
 {
-  [[ $# -lt 1 ]] && 
+  [[ $# -lt 1 ]] &&
     error "Please specify (1) an ISO file and (2) a drive to write to, e.g. /dev/sdd."
-  
+
   lsblk -f
-  
+
   printf "\nThis will write ISO file: %s%s%s\nto drive: %s%s%s\n\nContinue? " "${YELLOW}" "$1" "${NC}" "${YELLOW}" "$2" "${NC}"
   read -r -p "[y/N] " response
   case "${response}" in
@@ -392,7 +391,7 @@ gitd() # git diff {,$*}
 }
 
 # Show the (git-)difference between the current commit of the git repository
-# (in $PWD) and the commit of the repo before the last git pull/fetch. 
+# (in $PWD) and the commit of the repo before the last git pull/fetch.
 pulldiff()
 {
   # Disable shellcheck here as the @{1} argument is
@@ -466,7 +465,7 @@ rotate_pdf()
 {
   [[ $# -lt 1 ]] &&
     error "Please specify pdf(s) to rotate."
-  
+
   local baseFileName=""
 
   for pdf in "$@"; do
