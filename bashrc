@@ -1,19 +1,17 @@
 #!/usr/bin/env bash
 
+#                      ===> WARNING! <===
+# This file assumes you have the following programs installed:
+# - pacman (e.g. you are on Arch or an Arch-based distro)
+# - exa
+# - ripgrep
+# - micro
+
 # Use bash-completion, if available
 if [[ -f /usr/share/bash-completion/bash_completion ]]; then
   # shellcheck source=/dev/null
   source /usr/share/bash-completion/bash_completion
 fi
-
-# Used to set default commands to others/enable other functionality
-check_command() {
-  if [[ -n "$(command -v "$1")" ]]; then
-    return 0
-  else
-    return 1
-  fi
-}
 
 # -----------------------------------------
 # ----------- Program variables -----------
@@ -35,17 +33,15 @@ PS1="\n \$([[ \$? != 0 ]] && printf \"%sX \" \"\${RED}\")\$(if [[ ${EUID} == 0 ]
 
 # Print time since last pacman -Syu upon opening a new terminal
 # as long as the time since last pacman -Syu is greater than 24 hours
-if check_command pacman; then
-  last_pac=$(tac /var/log/pacman.log | grep -m1 -F "[PACMAN] starting full system upgrade" | cut -d "[" -f2 | cut -d "]" -f1)
-  time_since=$((($(date +%s)-$(date --date="${last_pac}" +%s))/3600))
-  [[ "${time_since}" -gt 23 ]] && printf "\nIt has been %s%s hour%s%s since your last system upgrade\n" "${YELLOW}" "${time_since}" "$([ ${time_since} -ne 1 ] && printf s)" "${NC}"
-fi
+last_pac=$(tac /var/log/pacman.log | grep -m1 -F "[PACMAN] starting full system upgrade" | cut -d "[" -f2 | cut -d "]" -f1)
+time_since=$((($(date +%s)-$(date --date="${last_pac}" +%s))/3600))
+[[ "${time_since}" -gt 23 ]] && printf "\nIt has been %s%s hour%s%s since your last system upgrade\n" "${YELLOW}" "${time_since}" "$([ ${time_since} -ne 1 ] && printf s)" "${NC}"
 
 # -----------------------------------------
 # ------------- User variables ------------
 # -----------------------------------------
 
-export EDITOR="nano"
+export EDITOR="micro"
 
 # Set XDG dirs
 export XDG_CACHE_HOME="${HOME}/.cache"
@@ -92,10 +88,10 @@ if [[ -d "/var/lib/makechrootpkg" ]]; then
   alias makechrootpkg="makechrootpkg -c -u -d ${CCACHE_DIR}/:/ccache -r /var/lib/makechrootpkg -- CCACHE_DIR=/ccache"
 fi
 
-# Override the `mkarchiso` command with this function.
+# My personal way to make Arch isos.
 makearchiso()
 {
-  # Allow the user a clean exit upon Ctrl+C so as to not
+  # Allow the user a clean exit upon immediate Ctrl+C so as to not
   # continually spawn sudo prompts
   sudo true || return
 
@@ -111,8 +107,8 @@ makearchiso()
 
   # $ mkarchiso --help
   # -v: Enable verbose output
-  # -o: Set the output directory
-  # -w: Set the working directory
+  # -o: Set the output directory ($HOME/isos)
+  # -w: Set the working directory (/tmp/mkarchiso)
   # $PWD: expected directory of archiso config files (e.g. packages.x86_64)
   sudo mkarchiso \
     -v \
@@ -125,22 +121,12 @@ makearchiso()
 }
 
 # Redirect some commands to others
-if check_command bat; then
-  alias cat="bat"
-  alias less="bat"
-  alias tree="exa --long --tree"
-  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-fi
-if check_command exa; then
-  alias ls="exa --group-directories-first"
-  alias lsa="exa -la --group-directories-first"
-else
-  alias ls="ls --group-directories-first --color=auto"
-fi
-if check_command rg; then
-  alias rg="rg --hidden -g '!**/.git/**'"
-  alias grep="rg"
-fi
+alias ls="exa --group-directories-first"
+alias lsa="exa -la --group-directories-first"
+alias tree="exa --long --tree"
+
+alias rg="rg --hidden -g '!**/.git/**'"
+alias grep="rg"
 
 alias sl="ls"
 alias s="ls"
@@ -222,92 +208,17 @@ thesaurize()
 # ----- File Operations -----
 # ---------------------------
 
-# Compares two sums (or any strings, for that matter).
-compare_sums()
+# Compares two strings.
+compare_strings()
 {
   if [[ $# -gt 1 ]]; then
     if [[ "$1" == "$2" ]]; then
-      printf "%s Sums are equal.%s\n" "${GREEN}" "${NC}"
+      printf "%s Strings are equal.%s\n" "${GREEN}" "${NC}"
     else
-      printf "%s Sums are not equal.%s\n" "${RED}" "${NC}"
+      printf "%s Strings are not equal.%s\n" "${RED}" "${NC}"
     fi
   else
-    error "Please specify two sums to compare."
-  fi
-}
-
-# Specify a directory to compress and an output directory, and you can choose
-# from a few different compression programs, each using their multithreaded
-# complimentary programs if available. Also optionally encrypt and sign with
-# GPG. Outputs the compression ratio and total time to compress/encrypt.
-compress_cp()
-{
-  if [[ $# -gt 1 ]]; then
-    # Get full paths
-    local directoryToCompress="$1"
-    local targetDirectory="$2"
-
-    directoryToCompress="$(readlink -f "${directoryToCompress}")"
-    targetDirectory="$(readlink -f "${targetDirectory}")"
-
-    printf "\nWhat kind of compression?"
-    printf "\n [1] zstd (default)"
-    printf "\n [2] lz4"
-    printf "\n [3] xz"
-    printf "\n [4] gzip\n\n"
-    read -r -p "> " response
-    case "${response}" in
-      2)
-        local -r compression_program="lz4"
-        local -r compression_file_ext="lz4"
-        ;;
-      3)
-        local -r compression_program="xz"
-        local -r compression_file_ext="xz"
-        ;;
-      4)
-        if check_command "pigz"; then
-          local -r compression_program="pigz"
-        else
-          local -r compression_program="gzip"
-        fi
-        local -r compression_file_ext="gz"
-        ;;
-      *)
-        # Default
-        if check_command "pzstd"; then
-          local -r compression_program="pzstd"
-        else
-          local -r compression_program="zstd"
-        fi
-        local -r compression_file_ext="zst"
-        ;;
-    esac
-
-    # Target output file name
-    targetOutput="${directoryToCompress##*/}.tar.${compression_file_ext}"
-
-    printf "\nSign and encrypt with key %s? " "${GPG_KEY_ID}"
-    read -r -p "[y/N] " response
-    local -r start_time="$(date +%s)"
-    case "${response}" in
-      [yY][eE][sS]|[yY])
-        targetOutput="${targetOutput}.gpg"
-        tar -I "${compression_program}" -cf - "${directoryToCompress}" | gpg2 -z 0 --default-key "${GPG_KEY_ID}" --recipient "${GPG_KEY_ID}" --sign --encrypt > "${targetDirectory}/${targetOutput}"
-        ;;
-      *)
-        tar -I "${compression_program}" -cf "${targetDirectory}/${targetOutput}" "${directoryToCompress}"
-        ;;
-    esac
-    local -r end_time="$(date +%s)"
-
-    printf "\nOutput compressed archive %s%s/%s%s%s" "${BLUE}" "${targetDirectory}" "${GREEN}" "${targetOutput}" "${NC}"
-    # Get the size of the directoryToCompress and the targetOutput file and divide them to get a compression ratio,
-    # rounded to the nearest hundredth, e.g. 0.91
-    printf "\nCompression ratio: %.2f" "$(echo "$(du -sc "${targetDirectory}/${targetOutput}" | tail -n1 | awk '{printf $1}') / $(du -sc "${directoryToCompress}" | tail -n1 | awk '{printf $1}')" | bc -l)"
-    printf "\nTime to compress: %s seconds\n" "$(( end_time - start_time ))"
-  else
-    error "Please specify (1) a directory to compress and (2) the target directory."
+    error "Please specify two strings to compare."
   fi
 }
 
