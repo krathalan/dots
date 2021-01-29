@@ -346,6 +346,11 @@ export_gpg_pubkey()
 # ----------- Misc ----------
 # ---------------------------
 
+generate_postfix_summary()
+{
+  sudo journalctl --unit=postfix.service | pflogsumm | less
+}
+
 # microv(iew)
 # A simple function to open any file readonly with micro
 # while adhering to its AppArmor profile
