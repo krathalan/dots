@@ -13,6 +13,12 @@ if [[ -f /usr/share/bash-completion/bash_completion ]]; then
   source /usr/share/bash-completion/bash_completion
 fi
 
+# Use grc colorizer, if available
+if [[ -f /etc/profile.d/grc.sh ]]; then
+  # shellcheck source=/dev/null
+  source /etc/profile.d/grc.sh
+fi
+
 # -----------------------------------------
 # ----------- Program variables -----------
 # -----------------------------------------
