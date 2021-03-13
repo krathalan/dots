@@ -71,10 +71,8 @@ alias sudo="sudo "
 # git
 alias gits="git status"
 alias gitlog="git log --pretty=oneline --abbrev-commit --show-signature"
-alias diff="diff --color"
 
 # Make commands have default flags/args
-alias ip="ip --color=auto"
 alias rsync="rsync -a --progress"
 alias stow="stow --target=\${HOME}"
 
@@ -89,8 +87,6 @@ alias stow="stow --target=\${HOME}"
 # 5. Start building packages with `makechrootpkg` instead of `makepkg`
 if [[ -d "/var/lib/makechrootpkg" ]]; then
   alias arch-nspawn="arch-nspawn /var/lib/makechrootpkg/root"
-  # $HOME, $HOME never changes
-  # shellcheck disable=SC2139
   alias makechrootpkg="makechrootpkg -c -u -d ${CCACHE_DIR}/:/ccache -r /var/lib/makechrootpkg -- CCACHE_DIR=/ccache"
 fi
 
