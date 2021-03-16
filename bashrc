@@ -88,7 +88,8 @@ alias stow="stow --target=\${HOME}"
 # 4. Re-source your ~/.bashrc, or restart your terminal
 # 5. Start building packages with `makechrootpkg` instead of `makepkg`
 if [[ -d "/var/lib/makechrootpkg" ]]; then
-  alias arch-nspawn="arch-nspawn /var/lib/makechrootpkg/root"
+  alias upgrade_chroot="arch-nspawn /var/lib/makechrootpkg/root pacman -Syu"
+  alias update_chroot="arch-nspawn /var/lib/makechrootpkg/root pacman -Syu"
   # $HOME, $HOME never changes
   # shellcheck disable=SC2139
   alias makechrootpkg="makechrootpkg -c -u -d ${CCACHE_DIR}/:/ccache -r /var/lib/makechrootpkg -- CCACHE_DIR=/ccache"
