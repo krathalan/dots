@@ -92,7 +92,7 @@ if [[ -d "/var/lib/makechrootpkg" ]]; then
   alias update_chroot="arch-nspawn /var/lib/makechrootpkg/root pacman -Syu"
   # $HOME, $HOME never changes
   # shellcheck disable=SC2139
-  alias makechrootpkg="makechrootpkg -c -u -d ${CCACHE_DIR}/:/ccache -r /var/lib/makechrootpkg -- CCACHE_DIR=/ccache"
+  alias makechrootpkg="makechrootpkg -c -d ${CCACHE_DIR}/:/ccache -r /var/lib/makechrootpkg -- CCACHE_DIR=/ccache"
 fi
 
 # My personal way to make Arch isos.
