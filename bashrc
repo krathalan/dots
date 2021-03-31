@@ -320,9 +320,19 @@ pulldiff()
 
 gitpoc() # git push origin [current branch]
 {
-  local branch
-  branch="$(git status | head -n1)"
-  git push origin "${branch/On branch }"
+  git push origin "$(git rev-parse --abbrev-ref HEAD)"
+}
+
+gitpac() # git push ALL [current branch]
+{
+  local -r branch="$(git rev-parse --abbrev-ref HEAD)"
+
+  local remotes
+  mapfile -t remotes <<< "$(git remote)"
+  
+  for remote in "${remotes[@]}"; do
+    git push "${remote}" "${branch}"
+  done
 }
 
 # ---------------------------
