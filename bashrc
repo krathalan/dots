@@ -32,7 +32,7 @@ readonly CYAN=$(tput sgr0 && tput setaf 6)
 readonly NC=$(tput sgr0) # No color/turn off all tput attributes
 
 
-PS1="\n \$([[ \$? != 0 ]] && printf \"%sX \" \"\${RED}\")\$(if [[ ${EUID} == 0 ]]; then printf \"%s\" \"\${RED}\"; else printf \"%s\" \"\${GREEN}\"; fi)\u\[${BLUE}\]@\h \[${NC}\]\w \[${YELLOW}\]\$(if git branch --show-current &> /dev/null; then git branch --show-current; fi)\n \[${NC}\]> "
+PS1="\n \$([[ \$? != 0 ]] && printf \"%sX \" \"\${RED}\")\$(if [[ ${EUID} == 0 ]]; then printf \"%s\" \"\${RED}\"; else printf \"%s\" \"\${PURPLE}\"; fi)\u\[${BLUE}\]@\h \[${NC}\]\w \[${YELLOW}\]\$(if git branch --show-current &> /dev/null; then git branch --show-current; fi)\n \[${NC}\]> "
 # Looks like:
 #  anders@desktop ~/git/dots master
 #  >
