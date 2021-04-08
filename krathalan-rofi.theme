@@ -3,10 +3,10 @@
 ! User: krathalan | krathalan
 ! ------------------------------------------------------------------------------
 
-rofi.color-normal:  #222222,#FFFFFF,#222222,#444444,#00FF96
+rofi.color-normal:  #222222,#FFFFFF,#222222,#444444,#c3b8e0
 rofi.modi: window,run,ssh
 rofi.padding: 20
-rofi.color-window:  #111111,#00FF96
+rofi.color-window:  #111111,#9482c9
 rofi.separator-style: none
 rofi.hide-scrollbar: true
 rofi.line-margin: 5

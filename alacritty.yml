@@ -23,7 +23,7 @@ scrolling:
 font:
   normal:
     family: Fira Mono
-  size: 13.5
+  size: 11.5
   offset:
     x: 0
     y: 0
@@ -45,7 +45,7 @@ colors:
     green:   '0x00cc77'
     yellow:  '0xffee00'
     blue:    '0x1a8cff'
-    magenta: '0x9482c9'
+    magenta: '0xb3a6d8'
     cyan:    '0x18bae7'
     white:   '0xeeeeee'
 
@@ -55,7 +55,7 @@ colors:
     green:   '0x00ff96'
     yellow:  '0xfff569'
     blue:    '0x66b3ff'
-    magenta: '0xb3a6d8'
+    magenta: '0x9482c9'
     cyan:    '0x5dcfee'
     white:   '0xffffff'
 
@@ -66,7 +66,7 @@ bell:
   duration: 0
   color: '0xffffff'
 
-background_opacity: 0.65
+background_opacity: 0.75
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
@@ -74,7 +74,9 @@ selection:
 
 cursor:
   style: Block
-  unfocused_hollow: false
+  blinking: Always
+  blink_interval: 500
+  unfocused_hollow: true
 
 live_config_reload: false
 working_directory: None
@@ -84,7 +86,7 @@ alt_send_esc: true
 debug:
   render_timer: false
   persistent_logging: false
-  log_level: None
+  log_level: OFF
   print_events: false
   ref_test: false
 

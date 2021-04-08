@@ -3,7 +3,8 @@
 [colors]
 black = #000
 white = #fff
-green = #00ff96
+; "Green" is actually purple but I don't want to change the variable name
+green = #b3a6d8
 yellow = #fff569
 
 [bar/mybar]
