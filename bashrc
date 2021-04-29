@@ -130,7 +130,7 @@ makearchiso()
 # Redirect some commands to others
 alias ls="exa --group-directories-first"
 alias lsa="exa -la --group-directories-first"
-alias tree="exa --long --tree"
+alias tree="exa --long --tree --group-directories-first"
 
 alias rg="rg --hidden -g '!**/.git/**'"
 alias grep="rg"
