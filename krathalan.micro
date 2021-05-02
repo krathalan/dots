@@ -26,7 +26,7 @@ color-link special "#9BD4FF,#000000"
 
 # Bars
 color-link tabbar "#FFFFFF,#444444"
-color-link statusline "#000000,#00FF96"
+color-link statusline "#000000,#B3A6D8"
 
 # Line number gutter
 color-link line-number "#AAAAAA,#1f1f1f"
