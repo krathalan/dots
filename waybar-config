@@ -1,6 +1,6 @@
 // ############################################################## \\
 // #             Krathalan's waybar configuration               # \\
-// #         Homepage: https://git.sr.ht/~krathalan/dots        # \\
+// #         Homepage: https://github.com/krathalan/dots        # \\
 // #        Copyright (C) 2019 krathalan; License: GPLv3        # \\
 // ############################################################## \\
 
@@ -25,7 +25,7 @@
     "exec": "xlsclients | awk '{printf $2}'"
   },
   "custom/vpn": {
-    // https://git.sr.ht/~krathalan/waybar-modules
+    // https://github.com/krathalan/waybar-modules
     "interval": 5,
     "tooltip": false,
     "format": "{}",
@@ -43,7 +43,7 @@
     "format-disconnected": "No internet"
   },
   "custom/battery": {
-    // https://git.sr.ht/~krathalan/waybar-modules
+    // https://github.com/krathalan/waybar-modules
     "interval": 5,
     "tooltip": false,
     "format": "{percentage}% {}{icon}",

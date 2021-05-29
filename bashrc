@@ -380,7 +380,7 @@ generate_postfix_summary()
 # microv(iew)
 # A simple function to open any file readonly with micro
 # while adhering to its AppArmor profile
-# https://git.sr.ht/~krathalan/apparmor-profiles
+# https://github.com/krathalan/apparmor-profiles
 microv()
 {
   if [[ $# -gt 0 ]]; then
