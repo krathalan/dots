@@ -368,7 +368,7 @@ download_chromium_ext()
   if [[ $# -lt 2 ]]; then
     error "Please provide: (1) the chromium version (e.g. 69.0), and (2) the extension id (e.g. cjpalhdlnbpafiamejdnhcphjbkeiagm for uBO, ldpochfccmkkmhdbclfhpagapcfdljkj for Decentraleyes)."
   else
-    curl "https://clients2.google.com/service/update2/crx?response=redirect&acceptformat=crx2,crx3&prodversion=$1&x=id%3D$2%26installsource%3Dondemand%26uc"
+    curl -LO "https://clients2.google.com/service/update2/crx?response=redirect&acceptformat=crx2,crx3&prodversion=$1&x=id%3D$2%26installsource%3Dondemand%26uc"
   fi
 }
 
