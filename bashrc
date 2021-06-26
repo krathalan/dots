@@ -302,9 +302,9 @@ gitcam() # git commit -am "$1"
 gitd() # git diff {,$*}
 {
   if [[ -n "$*" ]]; then
-    git diff "$*" | bat
+    git diff "$*" | bat --style=numbers,grid
   else
-    git diff | bat
+    git diff | bat --style=numbers,grid
   fi
 }
 
