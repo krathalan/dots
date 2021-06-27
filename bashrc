@@ -3,9 +3,9 @@
 #                      ===> WARNING! <===
 # This file assumes you have the following programs installed:
 # - pacman (e.g. you are on Arch or an Arch-based distro)
-# - exa
-# - ripgrep
-# - micro
+# - exa (replaces ls)
+# - ripgrep (replaces grep)
+# - micro (default editor)
 
 # Use bash-completion, if available
 if [[ -f /usr/share/bash-completion/bash_completion ]]; then
@@ -270,26 +270,6 @@ write_iso()
 # ----------- Git -----------
 # ---------------------------
 
-# Show status of all dirs that are also git repos in $PWD
-# For example, a directory structure of:
-# $PWD
-# ├── apparmor-profiles
-# ├── archiso
-# ├── dots
-# ├── ...
-# would result in this function calling the `git status` command
-# in each of the subdirectories, e.g. apparmor-profiles/, archiso/,
-# dots/, etc.
-allgits()
-{
-  for dir in ~/git/*/ ; do
-    printf "===> Printing git status for %s%s%s <===\n" "${GREEN}" "$(basename "${dir}")" "${NC}"
-    cd "${dir}" && git status
-    cd ..
-    printf "\n"
-  done
-}
-
 gitcam() # git commit -am "$1"
 {
   if [[ $# -gt 0 ]]; then
@@ -329,7 +309,7 @@ gitpac() # git push ALL [current branch]
 
   local remotes
   mapfile -t remotes <<< "$(git remote)"
-  
+
   for remote in "${remotes[@]}"; do
     git push "${remote}" "${branch}"
   done
