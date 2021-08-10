@@ -14,6 +14,7 @@ if [[ -f /usr/share/bash-completion/bash_completion ]]; then
 fi
 
 # Use grc colorizer, if available
+GRC_ALIASES=true
 if [[ -f /etc/profile.d/grc.sh ]]; then
   # shellcheck source=/dev/null
   source /etc/profile.d/grc.sh
