@@ -14,6 +14,7 @@ if [[ -f /usr/share/bash-completion/bash_completion ]]; then
 fi
 
 # Use grc colorizer, if available
+# shellcheck disable=2034
 GRC_ALIASES=true
 if [[ -f /etc/profile.d/grc.sh ]]; then
   # shellcheck source=/dev/null
@@ -24,16 +25,41 @@ fi
 # ----------- Program variables -----------
 # -----------------------------------------
 
-readonly GREEN=$(tput bold && tput setaf 2)
-readonly RED=$(tput bold && tput setaf 1)
-readonly YELLOW=$(tput sgr0 && tput setaf 3)
-readonly BLUE=$(tput sgr0 && tput setaf 4)
-readonly PURPLE=$(tput sgr0 && tput setaf 5)
-readonly CYAN=$(tput sgr0 && tput setaf 6)
-readonly NC=$(tput sgr0) # No color/turn off all tput attributes
+GREEN=$(tput bold && tput setaf 2)
+RED=$(tput bold && tput setaf 1)
+YELLOW=$(tput sgr0 && tput setaf 3)
+BLUE=$(tput sgr0 && tput setaf 4)
+PURPLE=$(tput sgr0 && tput setaf 5)
+CYAN=$(tput sgr0 && tput setaf 6)
+NC=$(tput sgr0) # No color/turn off all tput attributes
 
+readonly GREEN
+readonly RED
+readonly YELLOW
+readonly BLUE
+readonly PURPLE
+# shellcheck disable=2034
+readonly CYAN
+readonly NC
 
-PS1="\n \$([[ \$? != 0 ]] && printf \"%sX \" \"\${RED}\")\$(if [[ ${EUID} == 0 ]]; then printf \"%s\" \"\${RED}\"; else printf \"%s\" \"\${PURPLE}\"; fi)\u\[${BLUE}\]@\h \[${NC}\]\w \[${YELLOW}\]\$(if git branch --show-current &> /dev/null; then git branch --show-current; fi)\n \[${NC}\]> "
+determine_git_status()
+{
+  local -r gitBranch="$(git branch --show-current 2>&1)"
+
+  case "${gitBranch}" in
+    fatal*) exit ;;
+    *) 
+      local -r gitStatus="$(git status 2>&1)"
+      if [[ "${gitStatus}" == "HEAD"* ]]; then
+        printf "%s" "${gitStatus%%\n*}"
+      else
+        printf "%s" "${gitBranch}"
+      fi
+      ;;
+  esac
+}
+
+PS1="\n \$([[ \$? != 0 ]] && printf \"%sX \" \"\${RED}\")\$(if [[ ${EUID} == 0 ]]; then printf \"%s\" \"\${RED}\"; else printf \"%s\" \"\${PURPLE}\"; fi)\u\[${BLUE}\]@\h \[${NC}\]\w \[${YELLOW}\]\$(determine_git_status)\n \[${NC}\]> "
 # Looks like:
 #  anders@desktop ~/git/dots master
 #  >
