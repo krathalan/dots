@@ -111,7 +111,7 @@ alias stow="stow --target=\${HOME}"
 # 2. Create the chroot directory:
 #     $ sudo mkdir -p /var/lib/makechrootpkg
 # 3. Install Arch into the chroot:
-#     $ sudo mkarchroot /var/lib/makechrootpkg/root base-devel
+#     $ sudo mkarchroot /var/lib/makechrootpkg/root base base-devel
 # 4. Re-source your ~/.bashrc, or restart your terminal
 # 5. Start building packages with `makechrootpkg` instead of `makepkg`
 if [[ -d "/var/lib/makechrootpkg" ]]; then
@@ -351,6 +351,7 @@ encrypt_file()
 {
   if [[ $# -gt 0 ]]; then
     gpg --sign --encrypt --default-key "${GPG_KEY_ID}" --recipient "${GPG_KEY_ID}" "$1"
+    printf "%sDon't forget to delete the original unencrypted file.%s\n" "${YELLOW}" "${NC}"
   else
     error "Please specify a file to encrypt."
   fi
