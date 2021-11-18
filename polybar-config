@@ -18,7 +18,7 @@ offset-x = 0
 offset-y = -12
 
 ; Colors
-background = #77000000
+background = #aa000000
 foreground = ${colors.white}
 
 ; Under-/overline pixel size and argb color

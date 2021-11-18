@@ -16,7 +16,7 @@ gaps bottom 26
 set $mod Mod4
 
 # Menu
-bindsym $mod+grave exec --no-startup-id rofi -config ~/.config/rofi/krathalan.theme -show run
+bindsym $mod+grave exec --no-startup-id dmenu_run -i -p ' >' -fn 'Fira Mono' -sb '#333333' -sf '#c3b8e0' -nb '#111111' -nf '#aaaaaa'
 
 # Open terminal
 bindsym $mod+Return exec --no-startup-id alacritty
@@ -29,6 +29,7 @@ bindsym $mod+e exec --no-startup-id nemo
 bindsym $mod+q kill
 
 # Lock screen
+# add --image="/path/to/image" if you want a lockscreen wallpaper
 bindsym Ctrl+Shift+l exec --no-startup-id i3lock --ignore-empty-password
 
 # Volume buttons
@@ -127,6 +128,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 font pango:fira mono 11
 
 # Start programs on login
+# exec --no-startup-id feh --bg-fill /path/to/background
 exec --no-startup-id picom --config ~/.config/picom.conf
 exec --no-startup-id redshift
 exec --no-startup-id dunst
