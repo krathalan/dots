@@ -1,2 +1,2 @@
 # Pass these options to ./autogen.sh in the plata-theme PKGBUILD
---disable-flashback --disable-xfce --disable-openbox --disable-cinnamon --disable-mate --disable-gnome --with-selection_color=#009959 --with-accent_color=#00ff96 --with-suggestion_color=#84bc9c --with-destruction_color=#b3001b
+--disable-flashback --disable-xfce --disable-openbox --disable-cinnamon --disable-mate --disable-gnome --with-selection_color=#9482C9 --with-accent_color=#B3A6D8 --with-suggestion_color=#3D8F8C --with-destruction_color=#b3001b
