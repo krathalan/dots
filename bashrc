@@ -102,7 +102,7 @@ alias diff="diff --color"
 
 # Make commands have default flags/args
 alias ip="ip --color=auto"
-alias rsync="rsync -a -z --compress-choice=zstd --compress-level=1 --progress"
+alias rsync="rsync -a -z --compress-choice=lz4 --progress"
 alias stow="stow --target=\${HOME}"
 
 # To start building packages in clean chroots, take the following steps.
