@@ -280,6 +280,10 @@ write_iso()
 
   lsblk -f
 
+  if [[ "$2" =~ [0-9] ]]; then
+    printf "\n%sWARNING:%s Are you sure you want to write to a partition and not the drive? You are writing to %s%s%s\n" "${RED}" "${NC}" "${RED}" "$2" "${NC}"
+  fi
+
   printf "\nThis will write ISO file: %s%s%s\nto drive: %s%s%s\n\nContinue? " "${YELLOW}" "$1" "${NC}" "${YELLOW}" "$2" "${NC}"
   read -r -p "[y/N] " response
   case "${response}" in
