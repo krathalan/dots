@@ -278,17 +278,22 @@ write_iso()
   [[ $# -lt 1 ]] &&
     error "Please specify (1) an ISO file and (2) a drive to write to, e.g. /dev/sdd."
 
-  lsblk -f
+  printf "%sDisk information for %s:%s\n" "${YELLOW}" "$2" "${NC}"
+  lsblk -f "$2"
+
+  printf "\nThis will write ISO file: %s%s%s\n                to drive: %s%s%s\n" "${YELLOW}" "$1" "${NC}" "${YELLOW}" "$2" "${NC}"
 
   if [[ "$2" =~ [0-9] ]]; then
-    printf "\n%sWARNING:%s Are you sure you want to write to a partition and not the drive? You are writing to %s%s%s\n" "${RED}" "${NC}" "${RED}" "$2" "${NC}"
+    printf "\n%sWARNING:%s Are you sure you want to write to a partition (e.g. /dev/sda1) and not the drive (e.g. /dev/sda)?" "${RED}" "${NC}"
   fi
 
-  printf "\nThis will write ISO file: %s%s%s\nto drive: %s%s%s\n\nContinue? " "${YELLOW}" "$1" "${NC}" "${YELLOW}" "$2" "${NC}"
+  printf "\nContinue? "
   read -r -p "[y/N] " response
   case "${response}" in
     [yY][eE][sS]|[yY])
-      sudo dd bs=8M status=progress oflag=sync if="$1" of="$2"
+      local command_to_run="sudo dd bs=bs=8M status=progress oflag=sync if=$1 of=$2"
+      printf "\nRunning command: %s%s%s\n" "${YELLOW}" "${command_to_run}" "${NC}"
+      ${command_to_run}
       ;;
     *)
       printf "Writing ISO cancelled.\n"
