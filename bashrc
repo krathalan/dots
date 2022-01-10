@@ -291,7 +291,7 @@ write_iso()
   read -r -p "[y/N] " response
   case "${response}" in
     [yY][eE][sS]|[yY])
-      local command_to_run="sudo dd bs=bs=8M status=progress oflag=sync if=$1 of=$2"
+      local command_to_run="sudo dd bs=8M status=progress oflag=sync if=$1 of=$2"
       printf "\nRunning command: %s%s%s\n" "${YELLOW}" "${command_to_run}" "${NC}"
       ${command_to_run}
       ;;
