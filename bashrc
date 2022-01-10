@@ -281,7 +281,8 @@ write_iso()
   printf "%sDisk information for %s:%s\n" "${YELLOW}" "$2" "${NC}"
   lsblk -f "$2"
 
-  printf "\nThis will write ISO file: %s%s%s\n                to drive: %s%s%s\n" "${YELLOW}" "$1" "${NC}" "${YELLOW}" "$2" "${NC}"
+  local -r size="$(printf "scale=1; %s/1024/1024\n" "$(stat --printf="%s" "$1")" | bc -l)"
+  printf "\nThis will write ISO file: %s%s%s (%s MB)\n                to drive: %s%s%s\n" "${YELLOW}" "$1" "${NC}" "${size}" "${YELLOW}" "$2" "${NC}"
 
   if [[ "$2" =~ [0-9] ]]; then
     printf "\n%sWARNING:%s Are you sure you want to write to a partition (e.g. /dev/sda1) and not the drive (e.g. /dev/sda)?" "${RED}" "${NC}"
