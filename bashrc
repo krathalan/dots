@@ -53,7 +53,7 @@ determine_git_status()
       if [[ "${gitStatus}" == "HEAD"* ]]; then
         printf "%s" "${gitStatus%%\n*}"
       else
-        printf "%s" "${gitBranch}"
+        printf "[%s]" "${gitBranch}"
       fi
       ;;
   esac
@@ -61,7 +61,7 @@ determine_git_status()
 
 PS1="\n \$([[ \$? != 0 ]] && printf \"%sX \" \"\${RED}\")\$(if [[ ${EUID} == 0 ]]; then printf \"%s\" \"\${RED}\"; else printf \"%s\" \"\${PURPLE}\"; fi)\u\[${BLUE}\]@\h \[${NC}\]\w \[${YELLOW}\]\$(determine_git_status)\n \[${NC}\]> "
 # Looks like:
-#  anders@desktop ~/git/dots master
+#  anders@desktop ~/git/dots [master]
 #  >
 
 # Print time since last pacman -Syu upon opening a new terminal
