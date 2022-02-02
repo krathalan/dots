@@ -155,6 +155,8 @@ makearchiso()
 }
 
 # Redirect some commands to others
+alias bt="bluetoothctl"
+
 alias ls="exa --group-directories-first"
 alias lsa="exa -la --group-directories-first"
 alias tree="exa --long --tree --group-directories-first"
