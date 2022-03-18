@@ -32,6 +32,7 @@ BLUE=$(tput sgr0 && tput setaf 4)
 PURPLE=$(tput sgr0 && tput setaf 5)
 CYAN=$(tput sgr0 && tput setaf 6)
 NC=$(tput sgr0) # No color/turn off all tput attributes
+GREY=$(tput sgr0 && tput setaf 8)
 
 readonly GREEN
 readonly RED
@@ -41,6 +42,8 @@ readonly PURPLE
 # shellcheck disable=2034
 readonly CYAN
 readonly NC
+# shellcheck disable=2034
+readonly GREY
 
 determine_git_status()
 {
@@ -59,7 +62,7 @@ determine_git_status()
   esac
 }
 
-PS1="\n \$([[ \$? != 0 ]] && printf \"%sX \" \"\${RED}\")\$(if [[ ${EUID} == 0 ]]; then printf \"%s\" \"\${RED}\"; else printf \"%s\" \"\${PURPLE}\"; fi)\u\[${BLUE}\]@\h \[${NC}\]\w \[${YELLOW}\]\$(determine_git_status)\n \[${NC}\]> "
+PS1="\n \$([[ \$? != 0 ]] && printf \"%sX \" \"\${RED}\")\$(if [[ ${EUID} == 0 ]]; then printf \"%s\" \"\${RED}\"; else printf \"%s\" \"\${PURPLE}\"; fi)\u\[${BLUE}\]@\h \[${NC}\]\w \[${YELLOW}\]\$(determine_git_status) ${GREY}\$(date "+%I:%M:%S")\n \[${NC}\]> "
 # Looks like:
 #  anders@desktop ~/git/dots [master]
 #  >
