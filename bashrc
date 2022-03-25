@@ -62,7 +62,7 @@ determine_git_status()
   esac
 }
 
-PS1="\n \$([[ \$? != 0 ]] && printf \"%sX \" \"\${RED}\")\$(if [[ ${EUID} == 0 ]]; then printf \"%s\" \"\${RED}\"; else printf \"%s\" \"\${PURPLE}\"; fi)\u\[${BLUE}\]@\h \[${NC}\]\w \[${YELLOW}\]\$(determine_git_status) ${GREY}\$(date "+%I:%M:%S")\n \[${NC}\]> "
+PS1="\n \$([[ \$? != 0 ]] && printf \"%sX \" \"\${RED}\")\$(if [[ ${EUID} == 0 ]]; then printf \"%s\" \"\${RED}\"; else printf \"%s\" \"\${PURPLE}\"; fi)\u\[${BLUE}\]@\h \[${NC}\]\w \[${YELLOW}\]\$(determine_git_status) ${GREY}\$(date "+%H:%M:%S")\n \[${NC}\]> "
 # Looks like:
 #  anders@desktop ~/git/dots [master]
 #  >
