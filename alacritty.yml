@@ -5,6 +5,7 @@
 ##############################################################
 
 window:
+  opacity: 0.75
   dimensions:
     columns: 0
     lines: 0
@@ -66,8 +67,6 @@ bell:
   duration: 0
   color: '0xffffff'
 
-background_opacity: 0.75
-
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
   save_to_clipboard: false
@@ -94,9 +93,6 @@ mouse:
   double_click: { threshold: 300 }
   triple_click: { threshold: 300 }
   hide_when_typing: true
-
-  url:
-    modifiers: None
 
 mouse_bindings:
   - { mouse: Middle, action: PasteSelection }
