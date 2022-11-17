@@ -67,11 +67,21 @@ PS1="\n \$([[ \$? != 0 ]] && printf \"%sX \" \"\${RED}\")\$(if [[ ${EUID} == 0 ]
 #  anders@desktop ~/git/dots [master]
 #  >
 
-# Print time since last pacman -Syu upon opening a new terminal
-# as long as the time since last pacman -Syu is greater than 24 hours
-last_pac=$(tac /var/log/pacman.log 2>/dev/null | grep -m1 -F "[PACMAN] starting full system upgrade" | cut -d "[" -f2 | cut -d "]" -f1)
-time_since=$((($(date +%s)-$(date --date="${last_pac}" +%s))/3600))
-[[ "${time_since}" -gt 23 ]] && printf "\nIt has been %s%s hour%s%s since your last system upgrade\n" "${YELLOW}" "${time_since}" "$([ ${time_since} -ne 1 ] && printf s)" "${NC}"
+if [[ -e /var/log/pacman.log ]]; then
+  # Print time since last pacman -Syu upon opening a new terminal
+  # as long as the time since last pacman -Syu is greater than 24 hours
+  last_pac=$(tac /var/log/pacman.log 2>/dev/null | grep -m1 -F "[PACMAN] starting full system upgrade" | cut -d "[" -f2 | cut -d "]" -f1)
+  time_since=$((($(date +%s)-$(date --date="${last_pac}" +%s))/3600))
+
+  if [[ "${time_since}" -gt 23 ]]; then
+    pacman_notification="${time_since} hours"
+    if [[ "${time_since}" -gt 47 ]]; then
+      time_since=$(( time_since / 24 ))
+      pacman_notification="${time_since} days"
+    fi
+    printf "\nIt has been %s%s%s since your last system upgrade\n" "${YELLOW}" "${pacman_notification}" "${NC}"
+  fi
+fi
 
 # -----------------------------------------
 # ------------- User variables ------------
