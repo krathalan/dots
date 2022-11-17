@@ -2,7 +2,6 @@
 
 #                      ===> WARNING! <===
 # This file assumes you have the following programs installed:
-# - pacman (e.g. you are on Arch or an Arch-based distro)
 # - exa (replaces ls)
 # - ripgrep (replaces grep)
 # - micro (default editor)
@@ -64,7 +63,7 @@ determine_git_status()
 
 PS1="\n \$([[ \$? != 0 ]] && printf \"%sX \" \"\${RED}\")\$(if [[ ${EUID} == 0 ]]; then printf \"%s\" \"\${RED}\"; else printf \"%s\" \"\${PURPLE}\"; fi)\u\[${BLUE}\]@\h \[${NC}\]\w \[${YELLOW}\]\$(determine_git_status) ${GREY}\$(date "+%H:%M:%S")\n \[${NC}\]> "
 # Looks like:
-#  anders@desktop ~/git/dots [master]
+#  user@hostname ~/git/repo [branch]
 #  >
 
 if [[ -e /var/log/pacman.log ]]; then
