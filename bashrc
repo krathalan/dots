@@ -227,7 +227,7 @@ list_packages_from_repo()
 # base-devel group and manually installed packages (e.g. from the AUR)
 list_explicitly_installed_packages()
 {
-  comm -23 <(pacman -Qqe | sort) <({ pacman -Qqg base-devel; pacman -Qmq; } | sort -u)
+  comm -23 <(pacman -Qqe | sort) <(pacman -Qmq | sort -u)
 }
 
 # ---------------------------
