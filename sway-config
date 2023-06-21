@@ -4,13 +4,13 @@
 #        Copyright (C) 2019 krathalan; License: GPLv3        #
 ##############################################################
 
-# Disable xwayland
-#xwayland disable
+# Uncomment to disable xwayland
+# xwayland disable
 
 ########## Color ##########
 
 # Only applies to popup windows
-client.focused #00ff96 #00ff96 #000000 #000000 #00ff96
+client.focused #b3a6d8 #b3a6d8 #000000 #000000 #b3a6d8
 
 ########## Gaps ##########
 
@@ -27,11 +27,11 @@ gaps outer 2
 set $mod Mod4
 
 # Menu
-bindsym $mod+grave exec --no-startup-id rofi -config ~/.config/rofi/krathalan.theme -show run
+bindsym $mod+grave exec --no-startup-id bemenu-run -p ' >' --fn 'Fira Mono 15' --tb "#111111" --tf "#c3b8e0" --fb "#111111" --ff "#c3b8e0" --nb "#111111" --nf "#aaaaaa" --hb "#333333" --hf "#c3b8e0"
 
 # Open terminal
-bindsym $mod+Return exec --no-startup-id alacritty
-bindsym $mod+t exec --no-startup-id alacritty
+bindsym $mod+Return exec --no-startup-id footclient
+bindsym $mod+t exec --no-startup-id footclient
 
 # Open nemo
 bindsym $mod+e exec --no-startup-id nemo
@@ -40,7 +40,7 @@ bindsym $mod+e exec --no-startup-id nemo
 bindsym $mod+q kill
 
 # Lock screen
-bindsym Ctrl+Shift+l exec --no-startup-id swaylock --font "fira mono"
+bindsym Ctrl+Shift+l exec --no-startup-id swaylock
 
 # Volume buttons
 bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5 && pamixer --get-volume > /tmp/wobpipe
@@ -110,43 +110,28 @@ mode "resize" {
 }
 
 # Miscellaneous
-bindsym --release $mod+Print exec --no-startup-id prntscrn.sh
-bindsym --release $mod+Shift+Print exec --no-startup-id prntscrn.sh slurp
+bindsym --release $mod+Print exec --no-startup-id kps
+bindsym --release $mod+Shift+Print exec --no-startup-id kps slurp
 bindsym $mod+h split h
 bindsym $mod+v split v
 bindsym $mod+f floating toggle
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec --no-startup-id swaynag -t warning -m 'Do you really want to exit sway?' -f "fira mono 13" -e top --background "#000000aa" --border "#00ff96ff" --border-bottom "#00ff96ff" --button-background "#009959ff" --button-gap 3 --text "#ffffffff" -b 'Yes, exit sway' 'swaymsg exit'
+bindsym $mod+Shift+e exec --no-startup-id swaynag -t warning -m 'Do you really want to exit sway?' -f "fira mono 13" -e top --background "#000000aa" --border "#b3a6d8ff" --border-bottom "#b3a6d8ff" --button-background "#684eb1ff" --button-gap 3 --text "#ffffffff" --button-text "#ffffffff" -b 'Yes, exit sway' 'swaymsg exit'
 
 ########## Other ##########
 
-set $term alacritty
+set $term footclient
 
-# GTK theme
-set $gnome-schema org.gnome.desktop.interface
-
-# Set colors for floating windows with titles
-exec --no-startup-id swaymsg client.focused "#00804a" "#00ff96" "#000000" "#00cc77" "#00804a"
+# Set environment variables for flatpak (xdg-desktop-portal) https://github.com/emersion/xdg-desktop-portal-wlr
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
 # Some miscellaneous settings
 exec --no-startup-id swaymsg focus_follows_mouse always
 
-exec_always --no-startup-id {
-    gsettings set $gnome-schema gtk-theme 'Plata-Noir'
-    gsettings set $gnome-schema icon-theme 'Papirus-Dark'
-    gsettings set $gnome-schema font-name 'SF Pro Display 13'
-}
 
 # Font for window titles and swaybar
-font pango:fira mono 13
+font pango:iosevka custom 13
 
-# Start programs on login
-bar {
-    swaybar_command waybar
-}
-exec --no-startup-id mako
-  exec --no-startup-id wlsunset -l "47.7" -L "-122.2" -t 3000 -T 6500
-
-# Idle
-exec --no-startup-id swayidle before-sleep 'swaylock --font "fira mono"'
+# Start sway target for systemd user units
+exec_always "systemctl --user import-environment; systemctl --user start sway-session.target"

@@ -197,7 +197,7 @@ error()
 # Removes old packages built with make(chroot)pkg
 clean_pkgbuild_dirs()
 {
-  local -r dirsToClean=("${HOME}/aur-dev" "${HOME}/aur" "${HOME}/git/pkgbuilds")
+  local -r dirsToClean=("${HOME}/aur" "${HOME}/git/pkgbuilds")
   local toClean
 
   for directory in "${dirsToClean[@]}"; do
