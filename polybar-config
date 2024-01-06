@@ -27,7 +27,7 @@ padding-right = 1
 module-margin = 0
 
 ; Fonts
-font-0 = FiraMono:size=11;
+font-0 = IosevkaCustom:size=11;
 font-1 = MaterialDesignIcons:size=11;
 
 ; Modules
