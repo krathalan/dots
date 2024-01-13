@@ -8,7 +8,7 @@ for_window [class=".*"] border pixel 0
 # Add gaps
 gaps inner 12
 gaps outer 2
-gaps bottom 26
+gaps bottom 52
 
 ########## Key bindings ##########
 
@@ -16,7 +16,7 @@ gaps bottom 26
 set $mod Mod4
 
 # Menu
-bindsym $mod+grave exec --no-startup-id dmenu_run -i -p ' >' -fn 'Fira Mono' -sb '#333333' -sf '#c3b8e0' -nb '#111111' -nf '#aaaaaa'
+bindsym $mod+grave exec --no-startup-id dmenu_run -i -p ' >' -fn 'Iosevka Custom-24' -sb '#333333' -sf '#c3b8e0' -nb '#111111' -nf '#aaaaaa'
 
 # Open terminal
 bindsym $mod+Return exec --no-startup-id alacritty
@@ -115,6 +115,7 @@ mode "resize" {
 }
 
 # Miscellaneous
+bindsym --release $mod+Print exec --no-startup-id kps
 bindsym $mod+h split h
 bindsym $mod+v split v
 bindsym $mod+f floating toggle
@@ -125,10 +126,11 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 ########## Other ##########
 
 # Desktop
-font pango:fira mono 11
+font pango:iosevka custom 11
 
 # Start programs on login
-# exec --no-startup-id feh --bg-fill /path/to/background
+# If you want a wallpaper
+# exec --no-startup-id feh --bg-fill /path/to/image
 exec --no-startup-id picom --config ~/.config/picom.conf
 exec --no-startup-id redshift
 exec --no-startup-id dunst
