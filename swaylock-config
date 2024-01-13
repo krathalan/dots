@@ -6,6 +6,8 @@
 
 ########## Appearance ##########
 
+font=Iosevka Custom
+
 # Indicator
 indicator-caps-lock
 indicator-radius=100
@@ -14,8 +16,8 @@ indicator-thickness=15
 # Highlight colors
 bs-hl-color=b3001bff
 caps-lock-bs-hl-color=b3001bff
-caps-lock-key-hl-color=00ff96ff
-key-hl-color=00ff96ff
+caps-lock-key-hl-color=6e5c9eff
+key-hl-color=6e5c9eff
 
 # Inside colors
 inside-color=00000000
@@ -25,10 +27,10 @@ inside-ver-color=00000077
 inside-wrong-color=00000077
 
 # Ring colors
-ring-color=00cc77aa
+ring-color=b3a6d8aa
 ring-caps-lock-color=fff569aa
 ring-clear-color=eeeeeeff
-ring-ver-color=1a8cffff
+ring-ver-color=6e5c9eff
 ring-wrong-color=dd2241ff
 
 # Text
@@ -38,5 +40,6 @@ text-ver-color=ffffffff
 text-wrong-color=ffffffff
 
 # Miscellaneous
+#image="/path/to/image"
 ignore-empty-password
 

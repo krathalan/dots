@@ -2,7 +2,7 @@
 
 #                      ===> WARNING! <===
 # This file assumes you have the following programs installed:
-# - exa (replaces ls)
+# - eza (replaces ls)
 # - ripgrep (replaces grep)
 # - micro (default editor)
 
@@ -169,9 +169,9 @@ makearchiso()
 # Redirect some commands to others
 alias bt="bluetoothctl"
 
-alias ls="exa --group-directories-first"
-alias lsa="exa -la --group-directories-first"
-alias tree="exa --long --tree --group-directories-first"
+alias ls="eza --group-directories-first"
+alias lsa="eza -la --group-directories-first"
+alias tree="eza --long --tree --group-directories-first"
 
 alias rg="rg --hidden -g '!**/.git/**'"
 alias grep="rg"
@@ -197,7 +197,7 @@ error()
 # Removes old packages built with make(chroot)pkg
 clean_pkgbuild_dirs()
 {
-  local -r dirsToClean=("${HOME}/aur-dev" "${HOME}/aur" "${HOME}/git/pkgbuilds")
+  local -r dirsToClean=("${HOME}/aur" "${HOME}/git/pkgbuilds")
   local toClean
 
   for directory in "${dirsToClean[@]}"; do

@@ -1,8 +1,8 @@
 font=fira mono 14
 margin=20
 border-size=3
-background-color=#00ff96dd
-border-color=#ffffffff
+background-color=#b3a6d8ee
+border-color=#000000ff
 text-color=#000000ff
 icons=1
 icon-path=/usr/share/icons/Papirus-Dark

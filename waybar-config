@@ -12,38 +12,28 @@
   // Choose the order of the modules
   "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
   "modules-center": [],
-  "modules-right": ["custom/xclients", "custom/vpn", "network", "custom/battery", "pulseaudio", "cpu", "clock", "tray"],
+  "modules-right": ["custom/vpn", "network", "custom/battery", "pulseaudio", "cpu", "memory", "clock", "tray"],
   // Module config
   "sway/mode": {
     "tooltip": false,
     "format": "<span weight=\"bold\">{}</span>"
   },
-  "custom/xclients": {
-    "interval": 5,
-    "tooltip": false,
-    "format": "{}",
-    "exec": "xlsclients | awk '{printf $2}'"
-  },
   "custom/vpn": {
-    // https://github.com/krathalan/waybar-modules
     "interval": 5,
     "tooltip": false,
     "format": "{}",
     "return-type": "json",
-    "exec": "wbm_vpn your-vpn"
+    "exec": "wbm_vpn us-sea-wg-302"
   },
   "network": {
-    "tooltip": false,
-    "interval": 5,
-    // "interface": "wlp2*", // (Optional) To force the use of this interface
-    "format-wifi": "{essid} ({signalStrength}%) 蠟",
-    "format-ethernet": "Ethernet ",
-    "format-linked": "{ifname} (No IP)",
-    "format-alt": "{ifname}: {ipaddr}",
-    "format-disconnected": "No internet"
+    "format": "{ifname}",
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰈁",
+    "format-disconnected": "󰤮",
+    "tooltip": false
   },
   "custom/battery": {
-    // https://github.com/krathalan/waybar-modules
     "interval": 5,
     "tooltip": false,
     "format": "{percentage}% {}{icon}",
@@ -73,6 +63,10 @@
     "interval": 5,
     "tooltip": false,
     "format": "{usage}% 󰝨"
+  },
+  "memory": {
+      "interval": 15,
+      "format": "{percentage}% 󰘚"
   },
   "clock": {
     "tooltip": false,
