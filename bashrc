@@ -53,15 +53,15 @@ determine_git_status()
     *) 
       local -r gitStatus="$(git status 2>&1)"
       if [[ "${gitStatus}" == "HEAD"* ]]; then
-        printf "%s" "${gitStatus%%\n*}"
+        printf "%s " "${gitStatus%%\n*}"
       else
-        printf "[%s]" "${gitBranch}"
+        printf "[%s] " "${gitBranch}"
       fi
       ;;
   esac
 }
 
-PS1="\n \$([[ \$? != 0 ]] && printf \"%sX \" \"\${RED}\")\$(if [[ ${EUID} == 0 ]]; then printf \"%s\" \"\${RED}\"; else printf \"%s\" \"\${PURPLE}\"; fi)\u\[${BLUE}\]@\h \[${NC}\]\w \[${YELLOW}\]\$(determine_git_status) ${GREY}\$(date "+%H:%M:%S")\n \[${NC}\]> "
+PS1="\n \$([[ \$? != 0 ]] && printf \"%sX \" \"\${RED}\")\$(if [[ ${EUID} == 0 ]]; then printf \"%s\" \"\${RED}\"; else printf \"%s\" \"\${PURPLE}\"; fi)\u\[${BLUE}\]@\h \[${NC}\]\w \[${YELLOW}\]\$(determine_git_status)${GREY}\$(date "+%H:%M:%S")\n \[${NC}\]> "
 # Looks like:
 #  user@hostname ~/git/repo [branch]
 #  >
