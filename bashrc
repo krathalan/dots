@@ -33,16 +33,7 @@ CYAN=$(tput sgr0 && tput setaf 6)
 NC=$(tput sgr0) # No color/turn off all tput attributes
 GREY=$(tput sgr0 && tput setaf 8)
 
-readonly GREEN
-readonly RED
-readonly YELLOW
-readonly BLUE
-readonly PURPLE
-# shellcheck disable=2034
-readonly CYAN
-readonly NC
-# shellcheck disable=2034
-readonly GREY
+readonly GREEN RED YELLOW BLUE PURPLE CYAN NC GREY
 
 determine_git_status()
 {
@@ -394,15 +385,6 @@ export_gpg_pubkey()
 # ---------------------------
 # ----------- Misc ----------
 # ---------------------------
-
-download_chromium_ext()
-{
-  if [[ $# -lt 2 ]]; then
-    error "Please provide: (1) the chromium version (e.g. 69.0), and (2) the extension id (e.g. cjpalhdlnbpafiamejdnhcphjbkeiagm for uBO, ldpochfccmkkmhdbclfhpagapcfdljkj for Decentraleyes)."
-  else
-    curl -LO "https://clients2.google.com/service/update2/crx?response=redirect&acceptformat=crx2,crx3&prodversion=$1&x=id%3D$2%26installsource%3Dondemand%26uc"
-  fi
-}
 
 generate_postfix_summary()
 {
