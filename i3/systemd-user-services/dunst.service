@@ -1,0 +1,11 @@
+[Unit]
+Description=Dunst notification daemon for i3
+BindsTo=xorg-session.target
+
+[Service]
+Type=exec
+ExecStart=/usr/bin/dunst
+Restart=always
+
+[Install]
+WantedBy=xorg-session.target

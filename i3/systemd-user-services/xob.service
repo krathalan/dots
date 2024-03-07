@@ -1,0 +1,13 @@
+[Unit]
+Description=Xob overlay bar for i3
+BindsTo=xorg-session.target
+
+[Service]
+Type=exec
+ExecStartPre=/usr/bin/mkfifo /tmp/xobpipe
+ExecStart=/usr/bin/sh -c "/usr/bin/tail -f /tmp/xobpipe | /usr/bin/xob -t 2000"
+ExecStopPost=/usr/bin/rm -f /tmp/xobpipe
+Restart=always
+
+[Install]
+WantedBy=xorg-session.target

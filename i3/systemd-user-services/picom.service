@@ -1,0 +1,11 @@
+[Unit]
+Description=Picom compositor for i3
+BindsTo=xorg-session.target
+
+[Service]
+Type=exec
+ExecStart=/usr/bin/picom --config "${HOME}/.config/picom.conf"
+Restart=always
+
+[Install]
+WantedBy=xorg-session.target

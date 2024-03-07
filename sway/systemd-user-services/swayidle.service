@@ -1,0 +1,11 @@
+[Unit]
+Description=Idle manager for wayland
+Documentation=man swayidle
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/swayidle before-sleep 'swaylock'
+
+[Install]
+WantedBy=sway-session.target

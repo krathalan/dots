@@ -1,0 +1,11 @@
+[Unit]
+Description=Wallpaper service for sway
+Documentation=man swaybg
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/swaybg -o * -i /path/to/picture.jpg -m fill
+
+[Install]
+WantedBy=sway-session.target

@@ -1,0 +1,12 @@
+[Unit]
+Description=Day/night gamma adjustments for Wayland
+Documentation=man wlsunset
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+# Starts at 9pm, ends at 6am. 4500 nighttime color temperature, 6500 daytime
+ExecStart=/usr/bin/wlsunset -s "21:00" -S "06:00" -t 4500 -T 6500
+
+[Install]
+WantedBy=sway-session.target

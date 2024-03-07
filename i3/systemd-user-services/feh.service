@@ -1,0 +1,10 @@
+[Unit]
+Description=Feh background for i3
+BindsTo=xorg-session.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/feh --bg-fill /path/to/picture.jpg
+
+[Install]
+WantedBy=xorg-session.target

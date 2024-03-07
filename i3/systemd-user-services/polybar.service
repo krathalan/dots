@@ -1,0 +1,11 @@
+[Unit]
+Description=Polybar status bar for i3
+BindsTo=xorg-session.target
+
+[Service]
+Type=exec
+ExecStart=/usr/bin/polybar mybar
+Restart=always
+
+[Install]
+WantedBy=xorg-session.target

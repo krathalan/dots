@@ -128,13 +128,5 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # Desktop
 font pango:iosevka custom 11
 
-# Start programs on login
-# If you want a wallpaper
-# exec --no-startup-id feh --bg-fill /path/to/image
-exec --no-startup-id picom --config ~/.config/picom.conf
-exec --no-startup-id redshift
-exec --no-startup-id dunst
-exec --no-startup-id polybar mybar
-
-# Xob
-exec --no-startup-id mkfifo /tmp/xobpipe; tail -f /tmp/xobpipe | xob -t 2000
+# Start xorg-session.target to start all other programs under systemd user instance
+exec systemctl --user start xorg-session.target

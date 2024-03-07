@@ -1,0 +1,6 @@
+[Unit]
+Description=Xorg/i3 session
+Documentation=man:systemd.special
+BindsTo=graphical-session.target
+Wants=graphical-session-pre.target
+After=graphical-session-pre.target
