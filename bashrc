@@ -188,15 +188,23 @@ error()
 # Removes old packages built with make(chroot)pkg
 clean_pkgbuild_dirs()
 {
-  local -r dirsToClean=("${HOME}/aur" "${HOME}/git/pkgbuilds")
+  local -r dirsToClean=("${HOME}/aur" "${HOME}/git")
   local toClean
 
   for directory in "${dirsToClean[@]}"; do
     if [[ -d "${directory}" ]]; then
-      mapfile -t toClean <<< "$(find "${directory}" -type f \( -name "*.gz" -o -name "*.xz" -o -name "*.zst" -o -name "*.log" -o -name "*.sig" \))"
+      mapfile -t toClean <<< "$(find "${directory}" -type f \( -name "*.pkg.tar*" -o -name "*.log" \))"
 
       for file in "${toClean[@]}"; do
-        rm -f "${file}"
+        (
+          # cd into file's base directory
+          cd "${file%/*}" || exit
+
+          # Ensure file is not tracked by git
+          if ! git ls-files --error-unmatch "${file}" &> /dev/null; then
+            rm -f "${file}"
+          fi
+        )
       done
     else
       printf "\nSkipping %s, does not exist\n" "${directory}"
