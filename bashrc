@@ -32,8 +32,9 @@ PURPLE=$(tput sgr0 && tput setaf 5)
 CYAN=$(tput sgr0 && tput setaf 6)
 NC=$(tput sgr0) # No color/turn off all tput attributes
 GREY=$(tput sgr0 && tput setaf 8)
+WHITE=$(tput sgr0 && tput bold)
 
-readonly GREEN RED YELLOW BLUE PURPLE CYAN NC GREY
+readonly GREEN RED YELLOW BLUE PURPLE CYAN NC GREY WHITE
 
 determine_git_status()
 {
