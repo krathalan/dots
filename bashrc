@@ -270,6 +270,21 @@ compare_strings()
   fi
 }
 
+convert_video_to_h264()
+{
+  if [[ $# -lt 1 ]]; then
+    error "Please specify a file to convert."
+    return
+  fi
+  
+  if [[ ! -f "$1" ]]; then
+    error "File not found or error accessing file."
+    return
+  fi
+  
+  ffmpeg -i "$1" -c:v libx264 -c:a aac "${1%.*}.mp4"
+}
+
 # Outputs a .gif file that plays the original, but backwards.
 reverse_gif()
 {
