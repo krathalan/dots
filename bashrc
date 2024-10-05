@@ -203,10 +203,11 @@ clean_pkgbuild_dirs()
 
           # Ensure file is not tracked by git
           if ! git ls-files --error-unmatch "${file}" &> /dev/null; then
-            rm -f "${file}"
+            [[ -f "${file}" ]] && rm --interactive=never "${file}" && printf "\nRemoved %s" "${file}"
           fi
         )
       done
+      printf "\n"
     else
       printf "\nSkipping %s, does not exist\n" "${directory}"
     fi
