@@ -126,38 +126,6 @@ if [[ -d "/var/lib/makechrootpkg" ]]; then
   alias makechrootpkg="makechrootpkg -c -d ${CCACHE_DIR}/:/ccache -r /var/lib/makechrootpkg -- CCACHE_DIR=/ccache"
 fi
 
-# My personal way to make Arch isos.
-makearchiso()
-{
-  # Allow the user a clean exit upon immediate Ctrl+C so as to not
-  # continually spawn sudo prompts
-  sudo true || return
-
-  local -r iso_build_dir="/tmp/mkarchiso"
-  [[ -d "${iso_build_dir}" ]] &&
-    sudo rm -rf "${iso_build_dir}"
-  sudo mkdir -p "${iso_build_dir}"
-
-  local -r output_dir="${HOME}/isos"
-  [[ ! -d "${output_dir}" ]] &&
-    mkdir -p "${output_dir}"
-
-
-  # $ mkarchiso --help
-  # -v: Enable verbose output
-  # -o: Set the output directory ($HOME/isos)
-  # -w: Set the working directory (/tmp/mkarchiso)
-  # $PWD: expected directory of archiso config files (e.g. packages.x86_64)
-  sudo mkarchiso \
-    -v \
-    -o "${output_dir}" \
-    -w "${iso_build_dir}" \
-    "${PWD}"
-
-  # Clean up tmp dirs
-  sudo rm -rf "${iso_build_dir}"
-}
-
 # Redirect some commands to others
 alias bt="bluetoothctl"
 
